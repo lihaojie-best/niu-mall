@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.PmsProductDao">
+    <insert id="create" parameterType="com.niu.mall.admin.model.Product" >
+            INSERT INTO product (product_id, product_name, product_price, product_sales_volume)
+            VALUE(#{product.productId,jdbcType=BIGINT},
+                   #{product.productName,jdbcType=CHAR},
+                   #{product.productPrice,jdbcType=DECIMAL},
+                   #{product.productSales_volume,jdbcType=DECIMAL});
+            INSERT INTO productAttribute(product_id,product_colour,product_type,product_stock)
+            VALUE (#{product.productId,jdbcType=BIGINT},
+                #{product.productColour,jdbcType=CHAR},
+                #{product.productType,jdbcType=CHAR},
+                #{product.productStock,jdbcType=INTEGER});
+            INSERT INTO product_attribute(product_id,product_company,product_date)
+                VALUE (#{product.productId,jdbcType=BIGINT},
+                #{product.productCompany,jdbcType=CHAR},
+                #{product.productDate,jdbcType=DATE});
+    </insert>
+   <select id="findById" resultType="com.niu.mall.admin.model.Product">
+       select * from product p
+            LEFT JOIN product_attribute pa on pa.product_id = p.product_id
+           LEFT JOIN product_details pd ON p.productId = p.product_id
+           where p.product_id=#{productId}
+   </select>
+    <select id="findBasicById" resultType="com.niu.mall.admin.model.ProductBasic">
+        select * from product_details
+        where product_id=#{productId}
+    </select>
+    <select id="findDetailsById" resultType="com.niu.mall.admin.model.ProductBasic">
+        select * from product_attribute
+        where product_id=#{productId}
+    </select>
+</mapper>

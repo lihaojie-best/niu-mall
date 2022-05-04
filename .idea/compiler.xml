@@ -14,6 +14,7 @@
     <bytecodeTargetLevel>
       <module name="mall-admin" target="1.8" />
       <module name="mall-common" target="1.8" />
+      <module name="niuMall" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
