@@ -1,6 +1,6 @@
 package com.niu.mall.admin.service.impl;
 
-import com.niu.mall.admin.dao.ProductDao;
+import com.niu.mall.admin.dao.ProductMapper;
 import com.niu.mall.admin.dto.ProductParam;
 import com.niu.mall.admin.model.Product;
 import com.niu.mall.admin.model.ProductBasic;
@@ -14,23 +14,23 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductDao productDao;
+    private ProductMapper productMapper;
     @Override
     public int create(ProductParam product) {
 
-        productDao.create(product);
+        productMapper.create(product);
         return 0;
     }
 
     @Override
     public int update(Long id, ProductParam product) {
-        productDao.update(id,product);
+        productMapper.update(id,product);
         return 0;
     }
 
     @Override
     public Product getByProductId(Long productId) {
-        Product product=productDao.findById(productId);
+        Product product= productMapper.findById(productId);
         return product;
     }
 

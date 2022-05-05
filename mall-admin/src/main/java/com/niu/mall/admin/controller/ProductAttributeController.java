@@ -13,16 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/productattribute")
+@RequestMapping("/productAttribute")
 public class ProductAttributeController {
     @Autowired
     private ProductAttributeService productAttributeService;
 
     @ApiOperation("更新商品属性")
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public Result update(@RequestBody ProductAttributeParam productAttribute) {
-
         int count = productAttributeService.updateAttributeById(productAttribute.getProductAttribute());
 
 

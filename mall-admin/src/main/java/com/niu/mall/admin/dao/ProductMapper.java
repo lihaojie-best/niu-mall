@@ -1,18 +1,20 @@
 package com.niu.mall.admin.dao;
 
-import com.niu.mall.admin.dto.ProductAttributeParam;
 import com.niu.mall.admin.dto.ProductParam;
 import com.niu.mall.admin.model.Product;
 import com.niu.mall.admin.model.ProductAttribute;
 import com.niu.mall.admin.model.ProductBasic;
 import com.niu.mall.admin.model.productDetails;
+import org.mapstruct.Mapper;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface ProductDao {
+
+@Mapper
+public interface ProductMapper {
     /**
      * 创建商品
      */

@@ -36,7 +36,7 @@ public class ProductController {
     }
 
     @ApiOperation("更新商品")
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public Result update(@PathVariable Long id, @RequestBody ProductParam product) {
         int count = productService.update(id, product);
@@ -50,8 +50,9 @@ public class ProductController {
     @ApiOperation("查询商品")
     @RequestMapping(value = "/getByProductId", method = RequestMethod.GET)
     @ResponseBody
-    public Result<Product> getByProductId(@PathVariable Long id) {
-      Product product = productService.getByProductId(id);
+    public Result<Product> getByProductId() {
+        //@PathVariable Long id
+      Product product = productService.getByProductId(1L);
         return Result.success(product);
     }
 
