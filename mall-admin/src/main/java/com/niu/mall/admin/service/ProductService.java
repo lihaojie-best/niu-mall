@@ -1,6 +1,6 @@
 package com.niu.mall.admin.service;
 
-import com.niu.mall.admin.dto.ProductParam;
+import com.niu.mall.admin.dto.ProductParamDto;
 import com.niu.mall.admin.model.Product;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,25 +16,26 @@ public interface ProductService {
     /**
      * 创建商品
      */
-    @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
-    int create(ProductParam product);
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
+    int create(ProductParamDto product);
 
     /**
      * 更新商品
      */
     @Transactional
-    int update(Long id, ProductParam product);
+    int update(Long id, ProductParamDto productParam);
+
     /*
-    * 查询商品
+     * 查询商品
      */
     @Transactional
     Product getByProductId(Long productId);
+
     /**
      * 分页查询商品
      */
     @Transactional
-    List<ProductParam> list(ProductParam product, Integer pageSize, Integer pageNum);
-
+    List<ProductParamDto> list(ProductParamDto product, Integer pageSize, Integer pageNum);
 
 
 }

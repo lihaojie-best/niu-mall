@@ -1,4 +1,8 @@
+
+#dev是开发环境的配置
 spring:
+  profiles:
+    active: dev
   datasource:
     url: jdbc:mysql://localhost:3306/niumall?&useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
@@ -26,4 +30,7 @@ logging:
     com.niu.mall: debug
 
 #logstash:
+server:
+  address:
+
 #  host: localhost

@@ -16,17 +16,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
+
 @RequestMapping(value = "index")
 public class IndexController {
     @ResponseBody
     @GetMapping("/login")
     //改完代码以后  按ctrl+shift+F9   就不用重新启动了  就能自动编译新更改的代码
-    public Result login(){
+    public Result login() {
         return Result.failed("请求失败");
     }
+
     @ResponseBody
     @PostMapping("/test")
-    public Result test(){
+    public Result test() {
         return Result.failed("Test Failed");
     }
 }

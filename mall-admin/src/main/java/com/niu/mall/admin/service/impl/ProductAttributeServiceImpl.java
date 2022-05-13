@@ -10,15 +10,16 @@ import org.springframework.stereotype.Service;
 public class ProductAttributeServiceImpl implements ProductAttributeService {
     @Autowired
     private ProductMapper productMapper;
+
     @Override
-    public int updateAttributeById(ProductAttribute productAttribute) {
+    public int updateAttributeById(ProductAttribute  productAttribute) {
 
         productMapper.updateAttributeById(productAttribute.getProductId(), productAttribute);
         return 0;
     }
 
     @Override
-    public ProductAttribute getItem(Long id) {
+    public ProductAttribute findAttributeById(Long id) {
         productMapper.findAttributeById(id);
         return null;
     }

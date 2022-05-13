@@ -1,6 +1,6 @@
 package com.niu.mall.admin.dao;
 
-import com.niu.mall.admin.dto.ProductParam;
+import com.niu.mall.admin.dto.ProductParamDto;
 import com.niu.mall.admin.model.Product;
 import com.niu.mall.admin.model.ProductAttribute;
 import com.niu.mall.admin.model.ProductBasic;
@@ -18,44 +18,29 @@ public interface ProductMapper {
     /**
      * 创建商品
      */
-    @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
-    int create(ProductParam product);
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
+    int create(Product record);
 
     /**
      * 更新商品
      */
     @Transactional
-    int update(Long id, ProductParam product);
-
+    int update(Product record);
 
     /**
-     * 批量删除商品
-     */
-    @Transactional
-    int DeleteStatus(List<Long> ids, Integer deleteStatus);
-    /*
-    *查询商品全部信息
-    * */
+     *查询商品全部信息
+     * */
     @Transactional
     Product findById(Long id);
-    /*
-     *查询商品基础信息
-     * */
-    @Transactional
-    ProductBasic findBasicById(Long id);
-    /*
-     *查询商品详细信息
-     * */
-    @Transactional
-    productDetails findDetailsById(Long id);
-    /*
+
+    /**
      *查询商品属性信息
      * */
     @Transactional
     ProductAttribute findAttributeById(Long id);
+
     /**
      * 更新商品属性
-     *
      */
     @Transactional
     int updateAttributeById(Long id, ProductAttribute attribute);

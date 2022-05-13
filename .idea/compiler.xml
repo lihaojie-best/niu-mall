@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mall-common" />
         <module name="mall-admin" />
+        <module name="mall-mbg" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mall-admin" target="1.8" />
       <module name="mall-common" target="1.8" />
+      <module name="mall-mbg" target="1.8" />
       <module name="niuMall" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -21,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="mall-admin" options="-parameters" />
       <module name="mall-common" options="-parameters" />
+      <module name="mall-mbg" options="-parameters" />
     </option>
   </component>
 </project>

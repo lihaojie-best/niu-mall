@@ -1,0 +1,2 @@
+INSERT INTO niumall.product_details (product_id, product_company, product_date) VALUES (1001,'Apple','2021-03-21');
+INSERT INTO niumall.product_details (product_id, product_company, product_date) VALUES (1002,'Apple","2021-03-21');

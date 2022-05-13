@@ -1,0 +1,2 @@
+INSERT INTO niumall.product(product_id, product_name, product_price,product_sales_volume) VALUES (1001,'iphoneX',3999,2000);
+INSERT INTO niumall.product(product_id, product_name, product_price,product_sales_volume) VALUES (1002,'iphoneX',3999,4000);

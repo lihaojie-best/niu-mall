@@ -1,9 +1,11 @@
 package com.niu.mall.admin.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /*
@@ -12,8 +14,10 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class productDetails {
+public class productDetails implements Serializable {
     private Long productId;
+    @ApiModelProperty(value = "details.生产厂家")
     private String productCompany;
+    @ApiModelProperty(value = "details.商品日期")
     private Date productDate;
 }
