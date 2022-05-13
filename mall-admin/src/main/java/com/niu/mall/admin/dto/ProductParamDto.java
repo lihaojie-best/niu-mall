@@ -2,16 +2,7 @@ package com.niu.mall.admin.dto;
 
 
 import com.niu.mall.admin.model.Product;
-import com.niu.mall.admin.model.ProductAttribute;
-import com.niu.mall.admin.model.ProductBasic;
-import com.niu.mall.admin.model.productDetails;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 /*
     创建修改商品的参数
