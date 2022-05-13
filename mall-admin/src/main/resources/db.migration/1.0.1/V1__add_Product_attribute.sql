@@ -1,0 +1,2 @@
+INSERT INTO product_attribute (product_id, product_colour, product_type,product_stock) VALUES (1001,'白色','手机',3000);
+INSERT INTO niumall.product_attribute (product_id, product_colour, product_type,product_stock) VALUES (1002,'黑色','手机',70000);
