@@ -97,24 +97,24 @@
                 <artifactId>lombok</artifactId>
                 <optional>true</optional>
             </dependency>
-            <!--mybatis-plus和springboot整合包-->
-        <!--    <dependency>
+<!--            mybatis-plus和springboot整合包-->
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot-starter.version}</version>
-            </dependency>-->
-           <!-- MyBatis分页插件starter
+            </dependency>
+<!--            MyBatis分页插件starter-->
                 <dependency>
                     <groupId>com.github.pagehelper</groupId>
                     <artifactId>pagehelper-spring-boot-starter</artifactId>
                     <version>${pagehelper-starter.version}</version>
                 </dependency>
-            &lt;!&ndash;MyBatis分页插件&ndash;&gt;
+            <!--MyBatis分页插件-->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper</artifactId>
                 <version>${pagehelper.version}</version>
-            </dependency>-->
+            </dependency>
             <!--集成druid连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -142,12 +142,6 @@
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger-annotations.version}</version>
-            </dependency>
-            <!-- MyBatis 生成器 -->
-            <dependency>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-core</artifactId>
-                <version>${mybatis-generator.version}</version>
             </dependency>
             <!-- MyBatis-->
             <dependency>
