@@ -68,16 +68,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>${flyway-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-maven-plugin</artifactId>
-            <version>${flyway-maven-plugin.version}</version>
-        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -107,23 +98,23 @@
                 <optional>true</optional>
             </dependency>
             <!--mybatis-plus和springboot整合包-->
-            <dependency>
+        <!--    <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot-starter.version}</version>
-            </dependency>
-            <!--MyBatis分页插件starter-->
+            </dependency>-->
+           <!-- MyBatis分页插件starter
                 <dependency>
                     <groupId>com.github.pagehelper</groupId>
                     <artifactId>pagehelper-spring-boot-starter</artifactId>
                     <version>${pagehelper-starter.version}</version>
                 </dependency>
-            <!--MyBatis分页插件-->
+            &lt;!&ndash;MyBatis分页插件&ndash;&gt;
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper</artifactId>
                 <version>${pagehelper.version}</version>
-            </dependency>
+            </dependency>-->
             <!--集成druid连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -176,6 +167,17 @@
                 <artifactId>spring-data-commons</artifactId>
                 <version>${spring-data-commons.version}</version>
             </dependency>
+            <!-- flyway配置依赖-->
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flyway-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway-maven-plugin.version}</version>
+            </dependency>
             <!-- 阿里云OSS -->
             <dependency>
                 <groupId>com.aliyun.oss</groupId>
@@ -208,15 +210,15 @@
                     <groupId>com.spotify</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>${docker.maven.plugin.version}</version>
-                    <!--<executions>-->
-                        <!--<execution>-->
-                            <!--<id>build-image</id>-->
-                            <!--<phase>package</phase>-->
-                            <!--<goals>-->
-                                <!--<goal>build</goal>-->
-                            <!--</goals>-->
-                        <!--</execution>-->
-                    <!--</executions>-->
+                    <executions>
+                        <execution>
+                            <id>build-image</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                     <configuration>
                         <imageName>mall/${project.artifactId}:${project.version}</imageName>
                         <dockerHost>${docker.host}</dockerHost>

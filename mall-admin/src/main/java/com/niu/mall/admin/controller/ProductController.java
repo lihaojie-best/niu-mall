@@ -21,45 +21,34 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    /*
-    创建商品
-        形参：ProductParamDto
+    /**
+     *  创建商品
+     *   形参：ProductParamDto
      */
     @ApiOperation("创建商品控制类")
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "create", method = RequestMethod.POST)
     @ResponseBody
-    public Result create(@ApiParam("商品参数,内封装ProductAttribute,ProductBasic,productDetails") @RequestBody ProductParamDto productParamDto) {
-        //调用productService的create方法创建商品，并将结果给count
-        int count = productService.create(productParamDto);
-        //count》0 创建成功，反之失败
-        if (count > 0) {
-            return Result.success(count);
-        } else {
-            return Result.failed();
-        }
+    public Result create(@ApiParam("商品参数,内封装ProductAttribute,ProductBasic,productDetails") @RequestBody Product product) {
+
+        return productService.createProduct(product);
     }
 
-    /*
-     * 更新商品 Param：id，
+    /**
+     * 更新商品
+     * @Param：id
      * */
     @ApiOperation("更新商品控制类")
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "update", method = RequestMethod.POST)
     @ResponseBody
-    public Result update(@PathVariable Long id, @RequestBody ProductParamDto productParam) {
-        int count = productService.update(id, productParam);
-        if (count > 0) {
-            return Result.success(count);
-        } else {
-            return Result.failed();
-        }
+    public Result update( @RequestBody Product product) {
+        return productService.update(product);
     }
 
     @ApiOperation("查询商品控制类")
-    @RequestMapping(value = "/getByProductId", method = RequestMethod.GET)
+    @RequestMapping(value = "/getByProductId/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Result<Product> getByProductId(long id) {
-        Product product = productService.getByProductId(id);
-        return Result.success(product);
+    public Result getByProductId(@PathVariable long id) {
+        return  productService.getByProductId(id);
     }
 
 }

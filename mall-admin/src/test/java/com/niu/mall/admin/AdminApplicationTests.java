@@ -39,11 +39,11 @@ public class AdminApplicationTests {
    public void createProduct() throws ParseException {
         //创建Product
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        Product product=new Product(1L,"白色","手机",2000,"iphoneX",3999,200,"Apple",dateformat.parse("2016-6-19"));
+        //Product product=new Product(1L,"白色","手机",2000,"iphoneX",3999,200,"Apple",dateformat.parse("2016-6-19"));
         //将product封装入ProductParamDto
         ProductParamDto productParamDto=new ProductParamDto();
-        productParamDto.setProduct(product);
-        productController.create(productParamDto);
+       // productParamDto.setProduct(product);
+       // productController.create(product);
 
     }
 }

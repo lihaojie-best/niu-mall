@@ -1,10 +1,15 @@
 package com.niu.mall.common.api;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.io.Serializable;
+
 /**
  * 通用返回对象
  * Created by macro on 2019/4/19.
  */
-public class Result<T> {
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL) //如果为null则不序列化
+public class Result<T> implements Serializable {
     /**
      * 状态码
      */
@@ -21,10 +26,22 @@ public class Result<T> {
     protected Result() {
     }
 
+
+    protected Result(long code) {
+        this.code = code;
+    }
+    protected Result(long code, T data) {
+        this.code = code;
+        this.data = data;
+    }
     protected Result(long code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+    protected Result(long code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
     /**
@@ -32,10 +49,10 @@ public class Result<T> {
      *
      * @param data 获取的数据
      */
+
     public static <T> Result<T> success(T data) {
         return new Result<T>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
     }
-
     /**
      * 成功返回结果
      *
@@ -70,7 +87,14 @@ public class Result<T> {
     public static <T> Result<T> failed(String message) {
         return new Result<T>(ResultCode.FAILED.getCode(), message, null);
     }
-
+    /**
+     * 失败返回结果
+     * @param message 提示信息
+     * @param data 返回数据
+     */
+    public static <T> Result<T> failed(T data,String message) {
+        return new Result<T>(ResultCode.FAILED.getCode(), message, data);
+    }
     /**
      * 失败返回结果
      */
@@ -107,6 +131,7 @@ public class Result<T> {
         return new Result<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
     }
 
+    //提供get.set方法
     public long getCode() {
         return code;
     }
