@@ -29,13 +29,11 @@ public interface ProductService {
     /**
      * 查询商品
      */
-    @Transactional
     Result getByProductId(Long Id);
 
     /**
      * 分页查询商品
      */
-    @Transactional
     List<ProductParamDto> list(ProductParamDto product, Integer pageSize, Integer pageNum);
 
 

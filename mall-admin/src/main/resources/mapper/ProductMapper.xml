@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.ProductMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.Product">
+            <id property="productId" column="product_id" jdbcType="BIGINT"/>
+            <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+            <result property="productColour" column="product_colour" jdbcType="VARCHAR"/>
+            <result property="productCompany" column="product_company" jdbcType="VARCHAR"/>
+            <result property="productType" column="product_type" jdbcType="VARCHAR"/>
+            <result property="productPrice" column="product_price" jdbcType="INTEGER"/>
+            <result property="productSalesVolume" column="product_sales_volume" jdbcType="INTEGER"/>
+            <result property="productStock" column="product_stock" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        product_id,product_name,product_colour,
+        product_company,product_type,product_price,
+        product_sales_volume,product_stock
+    </sql>
+</mapper>
