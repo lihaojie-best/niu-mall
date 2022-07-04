@@ -4,7 +4,11 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+    schema: classpath:db/migration/V1.0__creat_product.sql
+    data: classpath:db/migration/V2.0__add_product.sql
+    url: jdbc:mysql://localhost:3306/niumall?useSSL=false&useUnicode=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
   application:
     name: mall-admin
   profiles:
@@ -32,13 +36,20 @@ spring:
     validate-on-migrate: true
     # 当迁移发现数据库非空且存在没有元数据的表时，自动执行基准迁移，新建schema_version表
     baseline-on-migrate: true
-#MyBatis的mapperxml的路径配置
-mybatis:
-  mapper-locations:
-    - classpath:dao/*.xml
-    - classpath*:com/**/dao/*.xml
+#Mybatis-plus的寻址方式
+mybatis-plus:
+  #mapper-locations: classpath:mapper/*.xml
+  mapper-locations: com/**/mapper/*.xml
   configuration:
-    mapUnderscoreToCamelCase: true
+    map-underscore-to-camel-case: true
+
+#MyBatis的mapperxml的路径配置
+#mybatis:
+#  mapper-locations:
+#    - classpath:dao/*.xml]\
+#    - classpath*:com/**/dao/*.xml
+#  configuration:
+#    mapUnderscoreToCamelCase: true
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头

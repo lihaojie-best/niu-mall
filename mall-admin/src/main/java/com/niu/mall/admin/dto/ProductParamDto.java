@@ -1,7 +1,7 @@
 package com.niu.mall.admin.dto;
 
 
-import com.niu.mall.admin.model.Product;
+
 import lombok.EqualsAndHashCode;
 
 /*
@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = false)
 public class ProductParamDto {
-    private Product product;
+    /*private Product product;
 
     public ProductParamDto() {
     }
@@ -25,5 +25,5 @@ public class ProductParamDto {
 
     public void setProduct(Product product) {
         this.product = product;
-    }
+    }*/
 }
