@@ -7,13 +7,10 @@ import com.niu.mall.common.api.Result;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * <p>
- * 商品基本信息 前端控制器
- * </p>
+ * 商品基本信息 前端控制器 符合doc规范
  *
  * @author lhj
  * @since 2022-07-03
@@ -43,7 +40,8 @@ public class ProductController {
     @ApiOperation("更新商品控制类")
     @PutMapping(value = "/product")
     public Result update( @RequestBody Product product) {
-        return productService.update(product);
+        Result update = productService.update(product);
+        return update;
     }
 
     /**
@@ -58,6 +56,7 @@ public class ProductController {
 
         return null;
     }
+
     @ApiOperation("查询商品控制类")
     @GetMapping(value = "/product/{id}")
     public Result getByProductId(@PathVariable long id) {

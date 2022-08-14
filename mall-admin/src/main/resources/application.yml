@@ -39,16 +39,16 @@ spring:
 #Mybatis-plus的寻址方式
 mybatis-plus:
   #mapper-locations: classpath:mapper/*.xml
-  mapper-locations: com/**/mapper/*.xml
+  mapper-locations: com/**/dao/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
 #MyBatis的mapperxml的路径配置
 #mybatis:
-#  mapper-locations:
-#    - classpath:dao/*.xml]\
-#    - classpath*:com/**/dao/*.xml
-#  configuration:
+# mapper-locations:
+#   - classpath:dao/*.xml]\
+#   - classpath*:com/**/dao/*.xml
+# configuration:
 #    mapUnderscoreToCamelCase: true
 
 jwt:

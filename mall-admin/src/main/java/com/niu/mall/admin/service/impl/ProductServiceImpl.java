@@ -48,19 +48,17 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, Product> impleme
 
     @Override
     public Result getByProductId(Long id) {
-        Product product =new Product();
-        productDao.findById(id);
-        /*if (product.getProductName()==null) {
+
+        if (productDao.findById(id)==null) {
             System.out.println("空指针异常");
             return Result.failed("fail","查询失败");
-        }*/
-        System.out.println(product.getProductName()+"22323441111");
+        }
+        Product product =productDao.findById(id);
         return Result.success(product,"查询成功");
     }
 
     @Override
     public List<ProductParamDto> list(ProductParamDto productParamDto, Integer pageSize, Integer pageNum) {
-        // List<ProductBasic> list = productParamDto.getProductBasic();
         return null;
     }
 }

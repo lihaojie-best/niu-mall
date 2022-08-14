@@ -1,3 +1,4 @@
+/*
 package com.niu.mall.admin;
 
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -7,17 +8,21 @@ import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 
+*/
 /**
  * @author Administrator
  * @version 1.0
  * @description: TODO
  * @date 2022/6/29 23:54
- */
+ *//*
+
 public class Generator {
     public static void main(String[] args) {
-        /**
+        */
+/**
          * 第一步：  使用代码生成器
-         */
+         *//*
+
         //怎么用代码生成器呢？
         //    1.创建代码生成器对象
         //    2.执行代码生成器    //mp包里面的AutoGenerator
@@ -31,9 +36,11 @@ public class Generator {
         dataSource.setPassword("123456");
         autoGenerator.setDataSource(dataSource);
         //会在D盘生成一个com文件，但是这个位置是不对的，需要我们再进一步配置
-        /**
+        */
+/**
          * 第二步：    设置全局配置
-         */
+         *//*
+
         GlobalConfig globalConfig = new GlobalConfig();
         //默认输出D盘根下，设置到这一目录下  mybatis_04-generator/src/main/java
         //globalConfig.setOutputDir(System.getProperty("user.dir")+"/niu-mall/mall-admin/src/main/java/com/niu/mall/admin");
@@ -51,9 +58,11 @@ public class Generator {
         globalConfig.setIdType(IdType.ASSIGN_ID);
         autoGenerator.setGlobalConfig(globalConfig);
 
-        /**
+        */
+/**
          * 第三步：    设置包名相关配置
-         */
+         *//*
+
         PackageConfig packageConfig  =new PackageConfig();
         //设置生成的包名，与代码所在位置不冲突，二者叠加组成完整路径
         packageConfig.setParent("com.niu.mall.admin");
@@ -63,9 +72,11 @@ public class Generator {
         packageConfig.setMapper("com/niu/mall/admin/dao");
         autoGenerator.setPackageInfo(packageConfig);
 
-        /**
+        */
+/**
          * 第四步：   策略设置
-         */
+         *//*
+
         StrategyConfig strategyConfig = new StrategyConfig();
         //设置当前参与生成的表名，参数为可变参数   生成指定表
         strategyConfig.setInclude("product");
@@ -85,3 +96,4 @@ public class Generator {
         autoGenerator.execute();//执行
     }
 }
+*/

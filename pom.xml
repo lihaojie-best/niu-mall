@@ -24,7 +24,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <skipTests>true</skipTests>
         <docker.host>http://192.168.3.101:2375</docker.host>
         <docker.maven.plugin.version>1.2.2</docker.maven.plugin.version>
@@ -38,7 +38,7 @@
         <logstash-logback.version>5.3</logstash-logback.version>
         <minio.version>7.1.0</minio.version>
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
-        <mybatis-plus-boot-starter.version>3.4.1</mybatis-plus-boot-starter.version>
+        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
         <flyway-maven-plugin.version>8.5.10</flyway-maven-plugin.version>
         <flyway-core.version>8.5.10</flyway-core.version>
         <velocity.version>2.3</velocity.version>
@@ -69,7 +69,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -128,11 +127,11 @@
                 <version>${velocity.version}</version>
             </dependency>
             <!--集成druid连接池-->
-            <dependency>
+          <!--  <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
-            </dependency>
+            </dependency>-->
             <!--Mysql数据库驱动-->
             <dependency>
                 <groupId>mysql</groupId>
@@ -174,17 +173,17 @@
                 <version>${flyway-maven-plugin.version}</version>
             </dependency>-->
             <!-- 阿里云OSS 兼容s3 通用对象储存模块-->
-            <dependency>
+           <!-- <dependency>
                 <groupId>com.aliyun.oss</groupId>
                 <artifactId>aliyun-sdk-oss</artifactId>
                 <version>${aliyun-oss.version}</version>
             </dependency>
-            <!-- 通用对象储存模块 兼容s3-->
+            &lt;!&ndash; 通用对象储存模块 兼容s3&ndash;&gt;
             <dependency>
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
-            </dependency>
+            </dependency>-->
             <!--集成logstash-->
             <dependency>
                 <groupId>net.logstash.logback</groupId>
@@ -218,7 +217,7 @@
                         <imageName>mall/${project.artifactId}:${project.version}</imageName>
                         <dockerHost>${docker.host}</dockerHost>
                         <baseImage>java:8</baseImage>
-                        <entryPoint>["java", "-jar", "-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]
+                        <entryPoint>["java", "-jar", "-spring.profiles.active=prod","/${project.build.finalName}.jar"]
                         </entryPoint>
                         <resources>
                             <resource>
