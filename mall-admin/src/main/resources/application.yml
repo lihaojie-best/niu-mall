@@ -42,6 +42,9 @@ mybatis-plus:
   mapper-locations: com/**/dao/*.xml
   configuration:
     map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
 
 #MyBatis的mapperxml的路径配置
 #mybatis:

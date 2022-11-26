@@ -5,8 +5,11 @@ import java.util.HashMap;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
+import com.baomidou.mybatisplus.generator.config.TemplateType;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
@@ -22,9 +25,9 @@ public class IbatisGenerate {
 
     public static void main(String[] args) {
         String outPutDir = System.getProperty("user.dir") + "/mall-admin/src/main/java" ;
-        FastAutoGenerator.create("jdbc:mysql://localhost:3306/niumall?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC" ,
+        FastAutoGenerator.create("jdbc:mysql://10.9.9.70:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false" ,
                         "root" ,
-                        "123456")
+                        "root")
                 // 全局配置
                 .globalConfig(builder ->
                         builder
@@ -33,7 +36,7 @@ public class IbatisGenerate {
                                 .dateType(DateType.ONLY_DATE) // 时间策略
                                 .commentDate("yyyy-MM-dd") // 注释日期
                                 .outputDir(outPutDir) // 输出目录
-                                //.fileOverride() // 覆盖已生成文件
+                                .fileOverride() // 覆盖已生成文件
                                 .disableOpenDir() // 生成后禁止打开所生成的系统目录
                 )
 
@@ -42,26 +45,34 @@ public class IbatisGenerate {
                                 builder
                                         .parent("com.niu.mall") // 父包名
                                         .moduleName("") // 父包模块名
-                                        .entity("mbg.domain") // 实体类包名
+                                        .entity("mbg.po") // 实体类包名
                                         .service("admin.service") // service包名
                                         .serviceImpl("admin.service.impl") // serviceImpl包名
                                         .mapper("admin.dao") // mapper包名
                                         .controller("admin.controller") // controller包名
-                                        //.other("model") // 自定义包名
                                         //.xml("")
                                         .pathInfo(new HashMap<OutputFile,String>(){
                                             {
-                                                put(OutputFile.controller,"D:\\Code\\22\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\controller");
-                                                put(OutputFile.mapper,"D:\\Code\\22\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\dao");
-                                                put(OutputFile.xml,"D:\\Code\\22\\niu-mall\\mall-admin\\src\\main\\resources\\com\\niu\\mall\\admin\\dao");
-                                                put(OutputFile.service,"D:\\Code\\22\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\service");
-                                                put(OutputFile.serviceImpl,"D:\\Code\\22\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\service\\impl");
-                                                put(OutputFile.entity,"D:\\Code\\22\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\mbg\\domain");
+                                                put(OutputFile.controller,"D:\\Code\\IJ\\2022xia\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\controller");
+                                                put(OutputFile.mapper,"D:\\Code\\IJ\\2022xia\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\dao");
+                                                put(OutputFile.xml,"D:\\Code\\IJ\\2022xia\\niu-mall\\mall-admin\\src\\main\\resources\\com\\niu\\mall\\admin\\dao");
+                                                put(OutputFile.service,"D:\\Code\\IJ\\2022xia\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\service");
+                                                put(OutputFile.serviceImpl,"D:\\Code\\IJ\\2022xia\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\admin\\service\\impl");
+                                                put(OutputFile.entity,"D:\\Code\\IJ\\2022xia\\niu-mall\\mall-admin\\src\\main\\java\\com\\niu\\mall\\mbg\\po");
 
                                             }
                                         })
                 )
-
+                .templateConfig(builder ->
+                        builder
+                                .disable(TemplateType.ENTITY)
+                                .entity("/templates/entity.java")
+                                .service("/templates/service.java")
+                                .serviceImpl("/templates/serviceImpl.java")
+                                .mapper("/templates/mapper.java")
+                                .xml("/templates/mapper.xml")
+                                .controller("/templates/controller.java")
+                        )
                 // 策略配置
                 .strategyConfig(builder ->
                         builder
@@ -84,7 +95,7 @@ public class IbatisGenerate {
                                 .naming(NamingStrategy.underline_to_camel) // 数据库表映射到实体的命名策略  默认：表名 下划线命名 变——》 驼峰命名
                                 .columnNaming(NamingStrategy.underline_to_camel) // 数据库表字段映射到实体的命名策略  默认为 null，未指定按照 naming 执行 如今：字段名 下划线 -》 驼峰命名
                                 .idType(IdType.ASSIGN_ID) // 全局主键类型： 雪花算法生成id
-                                .formatFileName("%sDomain") // 格式化文件名称
+                                .formatFileName("%sPo") // 格式化文件名称
                                 //.addTableFills(new Column("create_time", FieldFill.INSERT)) // 添加表字段填充
                                 //.addTableFills(new Column("update_time", FieldFill.INSERT_UPDATE)) // 添加表字段填充  list集合
                                 .enableColumnConstant()  //开启生成字段常量
@@ -99,7 +110,8 @@ public class IbatisGenerate {
 
                                 // Service 策略配置
                                 .serviceBuilder()
-                                //.superServiceClass(BaseService.class)   设置 service 接口父类  ：BaseService.class
+                                .superServiceClass(IService.class)   //设置 service 接口父类  ：BaseService.class
+                                .superServiceImplClass(ServiceImpl.class)
                                 //superServiceClass(String)               设置 service 接口父类  ：com.baomidou.global.BaseService
                                 .formatServiceFileName("%sService") // 格式化Service 文件名称
                                 .formatServiceImplFileName("%sServiceImpl") // 格式化ServiceImpl 文件名称
@@ -107,7 +119,7 @@ public class IbatisGenerate {
                                 // Mapper 策略配置
                                 .mapperBuilder()
                                 .enableMapperAnnotation() // 开启@Mapper
-                                .enableBaseColumnList() // 启用 columnList (通用查询结果列)
+                                //.enableBaseColumnList() // 启用 columnList (通用查询结果列)
                                 .enableBaseResultMap() // 启动resultMap
                                 //.cache(Class<? extends Cache>)  设置缓存实现类  MyMapperCache.class
                                 .formatMapperFileName("%sDao") // Mapper 文件名称

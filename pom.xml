@@ -43,7 +43,7 @@
         <flyway-core.version>8.5.10</flyway-core.version>
         <velocity.version>2.3</velocity.version>
         <lombok.version>1.18.12</lombok.version>
-        <pagehelper.version>5.2.0</pagehelper.version>
+        <pagehelper.version>1.4.0</pagehelper.version>
         <jsqlparser.version>3.1</jsqlparser.version>
         <tk.mybatis.version>1.1.1</tk.mybatis.version>
     </properties>
@@ -73,6 +73,12 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--hutool工具类-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.6.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -83,6 +89,13 @@
                 <artifactId>mall-common</artifactId>
                 <version>${mall-common.version}</version>
             </dependency>
+            <!--Swagger-UI API文档生产工具-->
+         <!--   <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>-->
+            <!--解决Swagger访问主页时的NumberFormatException问题-->
 
             <!--Swagger begin-->
             <dependency>
@@ -130,7 +143,6 @@
             </dependency>
             <!--MybatisPlus eng -->
 
-
             <!--Mysql数据库驱动-->
             <dependency>
                 <groupId>mysql</groupId>
@@ -140,8 +152,8 @@
             <!-- 数据分页助手-->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>${pagehelper.version}</version>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.4.0</version>
             </dependency>
             <!--集成logstash-->
             <dependency>

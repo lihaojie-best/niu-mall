@@ -3,7 +3,6 @@ package com.niu.mall.common.config;
 import com.niu.mall.common.domain.SwaggerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -95,6 +94,7 @@ public abstract class BaseSwaggerConfig {
         result.add(new SecurityReference("Authorization", authorizationScopes));
         return result;
     }
+
 
     /**
      * 自定义Swagger配置
