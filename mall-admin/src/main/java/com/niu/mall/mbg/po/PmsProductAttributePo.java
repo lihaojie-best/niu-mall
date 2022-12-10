@@ -25,7 +25,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("pms_product_attribute")
 @ApiModel(value = "PmsProductAttributePo对象", description = "商品属性参数表")
-public class PmsProductAttributePo extends Model<PmsProductAttributePo> {
+public class PmsProductAttributePo extends Model<PmsProductAttributePo> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

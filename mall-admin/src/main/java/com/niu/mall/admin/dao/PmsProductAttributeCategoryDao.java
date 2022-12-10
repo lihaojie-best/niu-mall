@@ -1,8 +1,11 @@
 package com.niu.mall.admin.dao;
 
+import com.niu.mall.admin.dto.PmsProductAttributeCategoryDto;
 import com.niu.mall.mbg.po.PmsProductAttributeCategoryPo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PmsProductAttributeCategoryDao extends BaseMapper<PmsProductAttributeCategoryPo> {
 
+    List<PmsProductAttributeCategoryDto> getListWithAttr();
 }
