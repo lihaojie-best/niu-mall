@@ -2,10 +2,13 @@ package com.niu.mall.common.exception;
 
 import com.niu.mall.common.api.IErrorCode;
 
+
 /**
  * 自定义API异常
- * Created by macro on 2020/2/27.
- */
+ *
+ * @author lihaojie
+ * @date 2022/12/07 23:02
+ **/
 public class ApiException extends RuntimeException {
     private IErrorCode errorCode;
 
