@@ -1,5 +1,7 @@
 package com.niu.mall.admin.controller;
 
+import com.niu.mall.admin.dto.PmsProductAttributeCategoryDto;
+import com.niu.mall.common.api.CommonPage;
 import com.niu.mall.common.api.Result;
 import com.niu.mall.mbg.po.PmsProductAttributeCategoryPo;
 import org.junit.jupiter.api.Test;
@@ -7,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 /**
  * PmsProductAttributeCategoryController测试
@@ -42,6 +46,9 @@ class PmsProductAttributeCategoryControllerTest {
      */
     @Test
     void deleteById() {
+        Result<Boolean> result = controller.deleteById(12L);
+        Boolean data = result.getData();
+        System.out.println(data);
     }
 
     /**
@@ -53,6 +60,10 @@ class PmsProductAttributeCategoryControllerTest {
      */
     @Test
     void getAll() {
+        Result<CommonPage<PmsProductAttributeCategoryPo>> result = controller.getAll(1, 3);
+        CommonPage<PmsProductAttributeCategoryPo> page = result.getData();
+        //打印数组
+        page.getList().forEach(System.out::println);
     }
 
     /**
@@ -64,6 +75,9 @@ class PmsProductAttributeCategoryControllerTest {
      */
     @Test
     void getById() {
+        Result<PmsProductAttributeCategoryPo> result = controller.getById(13L);
+        PmsProductAttributeCategoryPo data = result.getData();
+        System.out.println("data = " + data);
     }
 
     /**
@@ -75,5 +89,8 @@ class PmsProductAttributeCategoryControllerTest {
      */
     @Test
     void getListWithAttr() {
+        Result<List<PmsProductAttributeCategoryDto>> listWithAttr = controller.getListWithAttr();
+        List<PmsProductAttributeCategoryDto> data = listWithAttr.getData();
+        data.forEach(System.out::println);
     }
 }

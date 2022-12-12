@@ -8,8 +8,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
@@ -20,8 +19,7 @@ import lombok.experimental.Accessors;
  * @author lihaojie
  * @since 2022-11-21
  */
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
 @TableName("pms_product_attribute_category")
 @ApiModel(value = "PmsProductAttributeCategoryPo对象", description = "产品属性分类表")
@@ -34,6 +32,10 @@ public class PmsProductAttributeCategoryPo extends Model<PmsProductAttributeCate
 
     @TableField("name")
     private String name;
+
+    public String getName() {
+        return name;
+    }
 
     @ApiModelProperty("属性数量")
     @TableField("attribute_count")

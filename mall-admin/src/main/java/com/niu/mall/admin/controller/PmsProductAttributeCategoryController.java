@@ -57,8 +57,8 @@ public class PmsProductAttributeCategoryController {
     @GetMapping("/delete/{id}")
     @ResponseBody
     public Result<Boolean> deleteById(@PathVariable Long id) {
-        QueryWrapper<PmsProductAttributeCategoryPo> whereWrapper = new QueryWrapper<PmsProductAttributeCategoryPo>().eq("id", id);
-        boolean b = service.removeById(whereWrapper);
+       // QueryWrapper<PmsProductAttributeCategoryPo> whereWrapper = new QueryWrapper<PmsProductAttributeCategoryPo>().eq("id", id);
+        boolean b = service.removeById(id);
         if (b) {
             return Result.success(b);
         }
