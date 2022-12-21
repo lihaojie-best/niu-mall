@@ -8,13 +8,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * <p>
  * sku的库存 Mapper 接口
- * </p>
  *
  * @author lihaojie
- * @since 2022-11-21
- */
+ * @date 2022/12/21 20:03
+ **/
 @Mapper
 public interface PmsSkuStockDao extends BaseMapper<PmsSkuStockPo> {
     /**
