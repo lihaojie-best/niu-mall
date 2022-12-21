@@ -1,6 +1,7 @@
 package com.niu.mall.common.exception;
 
 import com.niu.mall.common.api.Result;
+import org.springframework.http.HttpRequest;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -8,24 +9,33 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 全局异常处理
- * Created by macro on 2020/2/27.
- */
-@ControllerAdvice
+ * (@RestControllerAdvice=@ControllerAdvice+@ResponseBody)
+ *
+ * @author lihaojie
+ * @date 2022/12/14 12:59
+ **/
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ResponseBody
+
     @ExceptionHandler(value = ApiException.class)
-    public Result handle(ApiException e) {
-        if (e.getErrorCode() != null) {
-            return Result.failed(e.getErrorCode());
+    public Result apiExceptionHandle(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     ApiException exception) {
+        if (exception.getErrorCode() != null) {
+            return Result.failed(exception.getErrorCode());
         }
-        return Result.failed(e.getMessage());
+        return Result.failed(exception.getMessage());
     }
 
-    @ResponseBody
+
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public Result handleValidException(MethodArgumentNotValidException e) {
         BindingResult bindingResult = e.getBindingResult();
@@ -33,13 +43,13 @@ public class GlobalExceptionHandler {
         if (bindingResult.hasErrors()) {
             FieldError fieldError = bindingResult.getFieldError();
             if (fieldError != null) {
-                message = fieldError.getField()+fieldError.getDefaultMessage();
+                message = fieldError.getField() + fieldError.getDefaultMessage();
             }
         }
         return Result.validateFailed(message);
     }
 
-    @ResponseBody
+
     @ExceptionHandler(value = BindException.class)
     public Result handleValidException(BindException e) {
         BindingResult bindingResult = e.getBindingResult();
@@ -47,7 +57,7 @@ public class GlobalExceptionHandler {
         if (bindingResult.hasErrors()) {
             FieldError fieldError = bindingResult.getFieldError();
             if (fieldError != null) {
-                message = fieldError.getField()+fieldError.getDefaultMessage();
+                message = fieldError.getField() + fieldError.getDefaultMessage();
             }
         }
         return Result.validateFailed(message);

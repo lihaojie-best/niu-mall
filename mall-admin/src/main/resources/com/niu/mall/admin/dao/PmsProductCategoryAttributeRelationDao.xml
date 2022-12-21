@@ -8,5 +8,12 @@
         <result column="product_category_id" property="productCategoryId" />
         <result column="product_attribute_id" property="productAttributeId" />
     </resultMap>
+    <insert id="insertList">
+        INSERT INTO pms_product_category_attribute_relation (product_category_id, product_attribute_id) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.productCategoryId,jdbcType=BIGINT},
+            #{item.productAttributeId,jdbcType=BIGINT})
+        </foreach>
+    </insert>
 
 </mapper>

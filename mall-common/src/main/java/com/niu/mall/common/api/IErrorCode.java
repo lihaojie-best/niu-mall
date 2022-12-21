@@ -2,8 +2,10 @@ package com.niu.mall.common.api;
 
 /**
  * 常用API返回对象接口
- * Created by macro on 2019/4/19.
- */
+ *
+ * @author lihaojie
+ * @date 2022/12/18 13:21
+ **/
 public interface IErrorCode {
     /**
      * 返回码

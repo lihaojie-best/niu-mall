@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * <p>
  * 商品信息 前端控制器
- * </p>
  *
  * @author lihaojie
- * @since 2022-11-21
- */
+ * @date 2022/12/18 18:34
+ **/
 @Api(tags = "PmsProductController", description = "商品管理")
 @RestController
 @RequestMapping("/pmsProductPo")
@@ -40,7 +38,6 @@ public class PmsProductController {
      * @date 2022/11/21 19:06
      */
     @ApiOperation("创建商品")
-    @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public Result creat(@RequestBody PmsProductDto pmsProductDto) {
         int count = productService.creat(pmsProductDto);
@@ -62,7 +59,6 @@ public class PmsProductController {
      */
     @ApiOperation("根据商品id获取商品编辑信息")
     @RequestMapping(value = "/updateInfo/{id}", method = RequestMethod.GET)
-    @ResponseBody
     public Result<PmsProductDto> getUpdateInfo(@PathVariable Long id) {
         PmsProductDto productDto = productService.getUpdateInfo(id);
         return Result.success(productDto);
@@ -79,7 +75,6 @@ public class PmsProductController {
      */
     @ApiOperation("更新商品")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    @ResponseBody
     public Result update(@PathVariable Long id, @RequestBody PmsProductDto productDto) {
         //创建条件Wrapper
         int count = productService.updateById(id, productDto);
@@ -103,7 +98,6 @@ public class PmsProductController {
      */
     @GetMapping("/list")
     @ApiOperation("分页查询商品")
-    @ResponseBody
     public Result list(@RequestBody PmsProductQueryDto productQueryDto,
                        @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                        @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
@@ -121,7 +115,6 @@ public class PmsProductController {
      * @date 2022/11/24 21:48
      */
     @ApiOperation("根据商品名或货号模糊查询")
-    @ResponseBody
     @GetMapping("/simpleList")
     public Result<List<PmsProductPo>> simpleList(String keyword) {
         //调用service
@@ -147,7 +140,6 @@ public class PmsProductController {
      * @date 2022/11/24 22:13
      */
     @ApiOperation("批量修改审核状态")
-    @ResponseBody
     @PostMapping("/update/verifyStatus")
     public Result updateVerifyStatusBatchIds(@RequestParam("ids") List<Long> ids,
                                              @RequestParam("verifyStatus") Integer verifyStatus,
@@ -171,7 +163,6 @@ public class PmsProductController {
      */
     @ApiOperation("批量上下架商品")
     @PostMapping("/update/publishStatus")
-    @ResponseBody
     public Result updatePublishStatus(@RequestParam("ids") List<Long> ids,
                                       @RequestParam("publishStatus") Integer publishStatus) {
         //创建更新实体类
@@ -198,7 +189,6 @@ public class PmsProductController {
      */
     @ApiOperation("批量推荐商品")
     @PostMapping("/update/recommendStatus")
-    @ResponseBody
     public Result updateRecommendStatus(@RequestParam("ids") List<Long> ids,
                                         @RequestParam("recommendStatus") Integer recommendStatus) {
         //创建更新实体类
@@ -217,7 +207,7 @@ public class PmsProductController {
     /**
      * 批量更新新品状态
      *
-     * @param ids 商品id
+     * @param ids       商品id
      * @param newStatus 0->不是新品；1->新品
      * @return com.niu.mall.common.api.Result
      * @author lihaojie
@@ -225,7 +215,6 @@ public class PmsProductController {
      */
     @ApiOperation("批量更新新品状态")
     @PostMapping("/update/newStatus")
-    @ResponseBody
     public Result updateNewStatus(@RequestParam("ids") List<Long> ids,
                                   @RequestParam("newStatus") Integer newStatus) {
         //创建更新实体类
@@ -244,7 +233,7 @@ public class PmsProductController {
     /**
      * 批量修改删除状态
      *
-     * @param ids 商品id
+     * @param ids          商品id
      * @param deleteStatus 0->未删除；1->已删除
      * @return com.niu.mall.common.api.Result
      * @author lihaojie
@@ -252,7 +241,6 @@ public class PmsProductController {
      */
     @ApiOperation("批量修改删除状态")
     @PostMapping("/update/deleteStatus")
-    @ResponseBody
     public Result updateDeleteStatus(@RequestParam("ids") List<Long> ids,
                                      @RequestParam("deleteStatus") Integer deleteStatus) {
         //创建更新实体类

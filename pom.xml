@@ -89,13 +89,6 @@
                 <artifactId>mall-common</artifactId>
                 <version>${mall-common.version}</version>
             </dependency>
-            <!--Swagger-UI API文档生产工具-->
-         <!--   <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-boot-starter</artifactId>
-                <version>${springfox-swagger.version}</version>
-            </dependency>-->
-            <!--解决Swagger访问主页时的NumberFormatException问题-->
 
             <!--Swagger begin-->
             <dependency>

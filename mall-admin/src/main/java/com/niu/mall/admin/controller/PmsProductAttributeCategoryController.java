@@ -36,7 +36,6 @@ public class PmsProductAttributeCategoryController {
      */
     @ApiOperation("添加商品属性分类")
     @PostMapping("/create")
-    @ResponseBody
     public Result<Boolean> creat(@RequestParam String name) {
         boolean save = service.save(new PmsProductAttributeCategoryPo().setName(name));
         if (save) {
@@ -55,7 +54,6 @@ public class PmsProductAttributeCategoryController {
      */
     @ApiOperation("删除单个商品属性分类")
     @GetMapping("/delete/{id}")
-    @ResponseBody
     public Result<Boolean> deleteById(@PathVariable Long id) {
        // QueryWrapper<PmsProductAttributeCategoryPo> whereWrapper = new QueryWrapper<PmsProductAttributeCategoryPo>().eq("id", id);
         boolean b = service.removeById(id);
@@ -74,7 +72,6 @@ public class PmsProductAttributeCategoryController {
      * @author lihaojie
      * @date 2022/12/10 21:47
      */
-    @ResponseBody
     @ApiOperation("分页查询商品属性分类")
     @GetMapping("/getAll")
     public Result<CommonPage<PmsProductAttributeCategoryPo>> getAll(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
@@ -93,7 +90,6 @@ public class PmsProductAttributeCategoryController {
      * @author lihaojie
      * @date 2022/12/10 21:47
      */
-    @ResponseBody
     @ApiOperation("获取单个商品属性分类信息")
     @GetMapping("/getById/{id}")
     public Result<PmsProductAttributeCategoryPo> getById(@PathVariable Long id) {
@@ -115,7 +111,6 @@ public class PmsProductAttributeCategoryController {
      * @author lihaojie
      * @date 2022/12/10 21:47
      */
-    @ResponseBody
     @ApiOperation("获取所有商品属性分类及其下属性")
     @GetMapping("/list/withAttr")
     public Result<List<PmsProductAttributeCategoryDto>> getListWithAttr() {
