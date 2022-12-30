@@ -18,9 +18,11 @@
     </parent>
 
     <dependencies>
+        <!--Spring security安全模块-->
         <dependency>
             <groupId>com.niu.mall</groupId>
-            <artifactId>mall-common</artifactId>
+            <artifactId>mall-security</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.github.jsqlparser</groupId>
@@ -31,7 +33,7 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
         </dependency>
-       <!--mybatis-plus开发必须的依赖，作用：Lombok通过增加一些“处理程序”，可以让java变得简洁、快速。-->
+        <!--mybatis-plus开发必须的依赖，作用：Lombok通过增加一些“处理程序”，可以让java变得简洁、快速。-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

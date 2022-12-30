@@ -12,6 +12,7 @@
     <modules>
         <module>mall-common</module>
         <module>mall-admin</module>
+        <module>mall-security</module>
     </modules>
 
     <parent>
@@ -46,6 +47,7 @@
         <pagehelper.version>1.4.0</pagehelper.version>
         <jsqlparser.version>3.1</jsqlparser.version>
         <tk.mybatis.version>1.1.1</tk.mybatis.version>
+        <jjwt.version>0.9.1</jjwt.version>
     </properties>
 
     <dependencies>
@@ -83,6 +85,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <!--mall通用模块-->
             <dependency>
                 <groupId>com.niu.mall</groupId>
@@ -153,6 +156,12 @@
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logstash-logback.version}</version>
+            </dependency>
+            <!--JWT(Json Web Token)登录支持-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
