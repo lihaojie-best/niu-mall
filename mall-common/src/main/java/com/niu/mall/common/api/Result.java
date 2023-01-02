@@ -6,8 +6,10 @@ import java.io.Serializable;
 
 /**
  * 通用返回对象
- * Created by macro on 2019/4/19.
- */
+ *
+ * @author lihaojie
+ * @date 2023/01/02 15:12
+ **/
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL) //如果为null则不序列化
 public class Result<T> implements Serializable {
     /**

@@ -15,8 +15,10 @@ import java.util.stream.Collectors;
 
 /**
  * SpringSecurity需要的用户详情
- * Created by macro on 2018/4/26.
- */
+ *
+ * @author lihaojie
+ * @date 2023/01/02 14:46
+ **/
 public class AdminUserDetailsBo implements UserDetails {
     //后台用户
     private UmsAdminPo umsAdmin;

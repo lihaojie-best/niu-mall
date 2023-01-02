@@ -11,6 +11,7 @@ import com.niu.mall.mbg.po.UmsAdminRoleRelationPo;
 import com.niu.mall.mbg.po.UmsResourcePo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
  * @author lihaojie
  * @date 2022/12/29 19:22
  **/
+@Service
 public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
     @Autowired
     private UmsAdminService adminService;
