@@ -11,5 +11,8 @@
         <result column="description" property="description" />
         <result column="category_id" property="categoryId" />
     </resultMap>
+    <select id="getAll" resultType="com.niu.mall.mbg.po.UmsResourcePo">
+        select * from ums_resource
+    </select>
 
 </mapper>

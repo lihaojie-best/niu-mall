@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -21,12 +22,11 @@ import lombok.experimental.Accessors;
  * @author lihaojie
  * @since 2022-11-21
  */
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
 @TableName("ums_resource")
 @ApiModel(value = "UmsResourcePo对象", description = "后台资源表")
-public class UmsResourcePo extends Model<UmsResourcePo> {
+public class UmsResourcePo  extends Model<UmsResourcePo> implements Serializable{
 
     private static final long serialVersionUID = 1L;
 

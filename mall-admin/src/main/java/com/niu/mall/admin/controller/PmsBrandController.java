@@ -5,7 +5,9 @@ import com.niu.mall.admin.service.PmsBrandService;
 import com.niu.mall.common.api.CommonPage;
 import com.niu.mall.common.api.Result;
 import com.niu.mall.mbg.po.PmsBrandPo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +21,9 @@ import java.util.List;
  * @author lihaojie
  * @date 2022/12/07 10:49
  **/
+@Api(tags = "PmsBrandController", description = "商品品牌管理")
 @RestController
-@RequestMapping("/pmsBrandPo")
+@RequestMapping("/brand")
 public class PmsBrandController {
     @Autowired
     private PmsBrandService brandService;
@@ -36,12 +39,12 @@ public class PmsBrandController {
     @ApiOperation("创建品牌")
     @PostMapping("/create")
     @ResponseBody
-    public Result creat(@Validated @RequestBody PmsBrandPo brand) {
+    public Result creat(@Validated @RequestBody @ApiParam("品牌实体类") PmsBrandPo brand) {
         int count = brandService.creat(brand);
         if (count > 0) {
             return Result.success(count);
         } else {
-            return Result.failed();
+            return Result.failed("创建失败");
         }
     }
 

@@ -63,7 +63,13 @@ public abstract class BaseSwaggerConfig {
                 .version(swaggerProperties.getVersion())
                 .build();
     }
-
+    /**
+     * 设置请求头token
+     *
+     * @return java.util.List<springfox.documentation.service.ApiKey>
+     * @author lihaojie
+     * @date 2023/01/16 23:13
+     */
     private List<ApiKey> securitySchemes() {
         //设置请求头信息
         List<ApiKey> result = new ArrayList<>();

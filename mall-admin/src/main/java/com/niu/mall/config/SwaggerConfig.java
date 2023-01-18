@@ -1,5 +1,7 @@
 package com.niu.mall.config;
 
+import com.niu.mall.common.config.BaseSwaggerConfig;
+import com.niu.mall.common.domain.SwaggerProperties;
 import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,28 +19,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
-
-
-    @Bean
-    public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .paths(PathSelectors.any())
-                .build();
-    }
-
-    //基本信息的配置，信息会在api文档上显示
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("niu-mall测试的接口文档")
-                .description("商城相关接口的文档")
-                .termsOfServiceUrl("http://localhost:8080/hello")
+public class SwaggerConfig extends BaseSwaggerConfig {
+    @Override
+    public SwaggerProperties swaggerProperties() {
+        return SwaggerProperties.builder()
+                .apiBasePackage("com.niu.mall.admin.controller")
+                .title("mall后台系统")
+                .description("mall后台相关接口文档")
+                .contactName("lihaojie")
                 .version("1.0")
+                .contactEmail("2014542916@qq.com")
+                .enableSecurity(true)
                 .build();
     }
-
-
 }

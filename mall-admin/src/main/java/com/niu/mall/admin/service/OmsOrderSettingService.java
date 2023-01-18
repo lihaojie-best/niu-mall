@@ -4,13 +4,20 @@ import com.niu.mall.mbg.po.OmsOrderSettingPo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * <p>
  * 订单设置表 服务类
- * </p>
  *
  * @author lihaojie
- * @since 2022-11-21
- */
+ * @date 2023/01/17 16:38
+ **/
 public interface OmsOrderSettingService extends IService<OmsOrderSettingPo> {
-
+    /**
+     * 修改指定订单设置
+     *
+     * @param id 订单设置表id
+     * @param orderSetting 订单设置表
+     * @return int
+     * @author lihaojie
+     * @date 2023/01/17 16:36
+     */
+    int update(Long id, OmsOrderSettingPo orderSetting);
 }

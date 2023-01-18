@@ -227,7 +227,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
      * @return com.github.pagehelper.Page<com.niu.mall.mbg.po.PmsProductPo>
      */
     @Override
-    public CommonPage<PmsProductDto> list(Integer pageSize, Integer pageNum, PmsProductQueryDto productQueryDto) {
+    public List<PmsProductDto> list(Integer pageSize, Integer pageNum, PmsProductQueryDto productQueryDto) {
         //开启分页助手
         PageHelper.startPage(pageNum,pageSize);
         //根据传入的productQueryDto生成审查map
@@ -259,7 +259,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductDao, PmsProduct
             BeanUtils.copyProperties(productPo,productDto);
             return productDto;
         }).collect(Collectors.toList());
-        return CommonPage.restPage(productDtoList);
+        return productDtoList;
     }
     /**
      *   批量修改审核状态

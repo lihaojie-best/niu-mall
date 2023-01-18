@@ -1,7 +1,7 @@
 package com.niu.mall.admin.controller;
 
 import cn.hutool.core.collection.CollUtil;
-import com.niu.mall.admin.dto.UmsAdminParam;
+import com.niu.mall.admin.param.UmsAdminParam;
 import com.niu.mall.admin.param.UmsAdminLoginParam;
 import com.niu.mall.admin.param.UmsUpdateAdminPasswordParam;
 import com.niu.mall.admin.service.UmsAdminService;
@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  **/
 @RestController
 @Api(tags = "UmsAdminController", description = "后台用户管理")
-@RequestMapping("/umsAdminPo")
+@RequestMapping("/admin")
 public class UmsAdminController {
     @Autowired
     private UmsAdminService adminService;
@@ -165,7 +165,7 @@ public class UmsAdminController {
      */
     @ApiOperation("根据用户名或姓名分页获取用户列表")
     @GetMapping("/list")
-    public Result<CommonPage<UmsAdminPo>> list(@RequestParam("keyword") String keyword,
+    public Result<CommonPage<UmsAdminPo>> list(@RequestParam(value = "keyword",required = false) String keyword,
                                                @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                                @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
         List<UmsAdminPo> adminList = adminService.list(keyword, pageSize, pageNum);

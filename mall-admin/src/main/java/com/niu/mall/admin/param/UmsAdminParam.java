@@ -1,4 +1,4 @@
-package com.niu.mall.admin.dto;
+package com.niu.mall.admin.param;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

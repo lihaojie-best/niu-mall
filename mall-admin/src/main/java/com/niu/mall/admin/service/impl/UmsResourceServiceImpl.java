@@ -124,5 +124,16 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceDao, UmsResou
         }
         return resourcePoList;
     }
+    /**
+     * 查询全部
+     *
+     * @return java.util.List<com.niu.mall.mbg.po.UmsResourcePo>
+     * @author lihaojie
+     * @date 2023/01/16 13:21
+     */
+    @Override
+    public List<UmsResourcePo> listAll() {
+       return resourceDao.getAll();
+    }
 
 }

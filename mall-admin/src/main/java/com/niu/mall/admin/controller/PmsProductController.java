@@ -23,7 +23,7 @@ import java.util.List;
  **/
 @Api(tags = "PmsProductController", description = "商品管理")
 @RestController
-@RequestMapping("/pmsProductPo")
+@RequestMapping("/product")
 public class PmsProductController {
 
     @Autowired
@@ -65,6 +65,26 @@ public class PmsProductController {
     }
 
     /**
+     * 分页查询商品
+     *
+     * @param productQueryDto
+     * @param pageSize
+     * @param pageNum
+     * @return com.niu.mall.common.api.Result
+     * @author lihaojie
+     * @date 2022/11/24 15:28
+     */
+    @ApiOperation("分页查询商品")
+    @GetMapping("/list")
+    public Result<CommonPage<PmsProductDto>> list(PmsProductQueryDto productQueryDto,
+                                                  @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                  @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        //调用service
+        List<PmsProductDto> list = productService.list(pageSize, pageNum, productQueryDto);
+        return Result.success(CommonPage.restPage(list));
+    }
+
+    /**
      * 更新商品
      *
      * @param id         id
@@ -84,26 +104,6 @@ public class PmsProductController {
         } else {
             return Result.failed();
         }
-    }
-
-    /**
-     * 分页查询商品
-     *
-     * @param productQueryDto
-     * @param pageSize
-     * @param pageNum
-     * @return com.niu.mall.common.api.Result
-     * @author lihaojie
-     * @date 2022/11/24 15:28
-     */
-    @GetMapping("/list")
-    @ApiOperation("分页查询商品")
-    public Result list(@RequestBody PmsProductQueryDto productQueryDto,
-                       @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        //调用service
-        CommonPage<PmsProductDto> pageBean = productService.list(pageSize, pageNum, productQueryDto);
-        return Result.success(pageBean);
     }
 
     /**

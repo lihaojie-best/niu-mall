@@ -16,17 +16,15 @@ import java.lang.reflect.Method;
 
 /**
  * Redis缓存切面，防止Redis宕机影响正常业务逻辑
- *
- * @author lihaojie
- * @date 2022/12/28 18:57
- **/
+ * Created by macro on 2020/3/17.
+ */
 @Aspect
 @Component
 @Order(2)
 public class RedisCacheAspect {
     private static Logger LOGGER = LoggerFactory.getLogger(RedisCacheAspect.class);
 
-    @Pointcut("execution(public * com.niu.mall.admin.service.*CacheService.*(..))")
+    @Pointcut("execution(public * com.macro.mall.portal.service.*CacheService.*(..)) || execution(public * com.macro.mall.service.*CacheService.*(..))")
     public void cacheAspect() {
     }
 

@@ -1,9 +1,5 @@
 package com.niu.mall.mbg;
 
-import java.util.Collections;
-import java.util.HashMap;
-
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,6 +8,8 @@ import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.TemplateType;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+
+import java.util.HashMap;
 
 
 
@@ -36,7 +34,7 @@ public class IbatisGenerate {
                                 .dateType(DateType.ONLY_DATE) // 时间策略
                                 .commentDate("yyyy-MM-dd") // 注释日期
                                 .outputDir(outPutDir) // 输出目录
-                                .fileOverride() // 覆盖已生成文件
+                                //.fileOverride() // 覆盖已生成文件
                                 .disableOpenDir() // 生成后禁止打开所生成的系统目录
                 )
 
@@ -63,7 +61,7 @@ public class IbatisGenerate {
                                             }
                                         })
                 )
-                .templateConfig(builder ->
+                /*.templateConfig(builder ->
                         builder
                                 .disable(TemplateType.ENTITY)
                                 .entity("/templates/entity.java")
@@ -72,7 +70,7 @@ public class IbatisGenerate {
                                 .mapper("/templates/mapper.java")
                                 .xml("/templates/mapper.xml")
                                 .controller("/templates/controller.java")
-                        )
+                        )*/
                 // 策略配置
                 .strategyConfig(builder ->
                         builder

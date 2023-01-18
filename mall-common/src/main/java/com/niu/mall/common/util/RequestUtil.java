@@ -5,7 +5,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * 请求工具类
+ * 请求工具类.获取请求相关信息
  *
  * @author Abel ZhaoKun
  * @date 2022/4/11 10:42

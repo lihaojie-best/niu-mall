@@ -62,7 +62,7 @@ public interface PmsProductService extends IService<PmsProductPo> {
      * @author lihaojie
      * @date 2022/11/24 15:29
      */
-    CommonPage<PmsProductDto> list(Integer pageSize, Integer pageNum, PmsProductQueryDto productQueryDto);
+    List<PmsProductDto> list(Integer pageSize, Integer pageNum, PmsProductQueryDto productQueryDto);
 
     /**
      * 批量修改审核状态

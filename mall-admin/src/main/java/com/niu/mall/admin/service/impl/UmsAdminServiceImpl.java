@@ -9,7 +9,7 @@ import com.niu.mall.admin.bo.AdminUserDetailsBo;
 import com.niu.mall.admin.dao.UmsAdminDao;
 import com.niu.mall.admin.dao.UmsAdminLoginLogDao;
 import com.niu.mall.admin.dao.UmsAdminRoleRelationDao;
-import com.niu.mall.admin.dto.UmsAdminParam;
+import com.niu.mall.admin.param.UmsAdminParam;
 import com.niu.mall.admin.param.UmsAdminLoginParam;
 import com.niu.mall.admin.param.UmsUpdateAdminPasswordParam;
 import com.niu.mall.admin.service.UmsAdminCacheService;
@@ -106,8 +106,8 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminDao, UmsAdminPo> im
         try {
             //根据用户名获取UserDetails(用户登录信息）
             UserDetails userDetails = loadUserByUsername(umsAdminLoginParam.getUsername());
-            //判断密码是否匹配
-            if (!passwordEncoder.matches(userDetails.getPassword(), umsAdminLoginParam.getPassword())) {
+            //判断密码是否匹配 umsAdminLoginParam明文   明文在前，加密的在后
+            if (!passwordEncoder.matches(umsAdminLoginParam.getPassword(),userDetails.getPassword())) {
                 Asserts.fail("密码错误");
             }
             if (!userDetails.isEnabled()) {
@@ -115,6 +115,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminDao, UmsAdminPo> im
             }
             //设置token
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            //设置认证token
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             token = jwtTokenUtil.generateToken(userDetails);
             //新增登入记录
@@ -307,7 +308,8 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminDao, UmsAdminPo> im
      * @author lihaojie
      * @date 2022/12/29 15:53
      */
-    private UserDetails loadUserByUsername(String username) {
+    @Override
+    public UserDetails loadUserByUsername(String username) {
         UmsAdminPo umsAdminPo = adminDao.selectOne(new QueryWrapper<UmsAdminPo>().eq("username", username));
         if (umsAdminPo != null) {
             List<UmsResourcePo> resourceList = getResourceList(umsAdminPo.getId());

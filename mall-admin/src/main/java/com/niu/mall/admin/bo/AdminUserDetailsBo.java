@@ -1,7 +1,6 @@
 package com.niu.mall.admin.bo;
 
 
-import com.niu.mall.admin.dto.UmsAdminParam;
 import com.niu.mall.mbg.po.UmsAdminPo;
 import com.niu.mall.mbg.po.UmsResourcePo;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,11 +1,12 @@
 package com.niu.mall.admin.service;
 
-import com.niu.mall.admin.dto.UmsAdminParam;
+import com.niu.mall.admin.param.UmsAdminParam;
 import com.niu.mall.admin.param.UmsAdminLoginParam;
 import com.niu.mall.admin.param.UmsUpdateAdminPasswordParam;
 import com.niu.mall.mbg.po.UmsAdminPo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.niu.mall.mbg.po.UmsRolePo;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
@@ -122,4 +123,13 @@ public interface UmsAdminService extends IService<UmsAdminPo> {
      */
     int updateRole(Long adminId, List<Long> roleIds);
 
+    /**
+     *  获取用户信息
+     *
+     * @param username 用户名
+     * @return org.springframework.security.core.userdetails.UserDetails
+     * @author lihaojie
+     * @date 2023/01/15 17:16
+     */
+    UserDetails loadUserByUsername(String username);
 }

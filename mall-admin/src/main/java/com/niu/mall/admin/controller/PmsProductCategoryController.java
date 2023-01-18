@@ -24,7 +24,7 @@ import java.util.List;
  **/
 @Api(tags = "PmsProductAttributeController", description = "商品属性管理")
 @RestController
-@RequestMapping("/pmsProductCategoryPo")
+@RequestMapping("/productCategory")
 public class PmsProductCategoryController {
     @Autowired
     private PmsProductCategoryService productCategoryService;
@@ -91,7 +91,7 @@ public class PmsProductCategoryController {
      * @date 2022/12/19 10:40
      */
     @ApiOperation("根据分类的父级id分页查询子分类")
-    @GetMapping("/listByCategoryParentId/{parentId}")
+    @GetMapping("/list/{parentId}")
     public Result<CommonPage<PmsProductCategoryPo>> listByCategoryParentId(@PathVariable Long parentId
             , @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                                                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
@@ -133,7 +133,7 @@ public class PmsProductCategoryController {
      * @date 2022/12/19 11:13
      */
     @ApiOperation("查询所有一级分类及子分类")
-    @GetMapping("/getListWithChild")
+    @GetMapping("/list/withChildren")
     public Result<List<PmsProductCategoryWithChildrenDto>> getWithChildren() {
         List<PmsProductCategoryWithChildrenDto> productCategoryWithChildrenDtoList = null;
         try {

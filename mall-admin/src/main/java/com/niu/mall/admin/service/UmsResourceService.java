@@ -53,4 +53,14 @@ public interface UmsResourceService extends IService<UmsResourcePo> {
      * @date 2023/01/02 19:10
      */
     List<UmsResourcePo> list(Long categoryId, String nameKeyword, String urlKeyword, Integer pageSize, Integer pageNum);
+
+    /**
+     * 查询全部
+     *
+     * @return java.util.List<com.niu.mall.mbg.po.UmsResourcePo>
+     * @author lihaojie
+     * @date 2023/01/16 13:21
+     */
+    List<UmsResourcePo> listAll();
+
 }

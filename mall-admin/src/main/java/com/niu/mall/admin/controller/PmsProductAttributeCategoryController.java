@@ -21,7 +21,7 @@ import java.util.List;
  **/
 @RestController
 @Api(tags = "PmsProductAttributeCategoryController", description = "商品属性分类管理")
-@RequestMapping("/pmsProductAttributeCategoryPo")
+@RequestMapping("/productAttribute/category")
 public class PmsProductAttributeCategoryController {
     @Autowired
     private PmsProductAttributeCategoryService service;
@@ -55,7 +55,6 @@ public class PmsProductAttributeCategoryController {
     @ApiOperation("删除单个商品属性分类")
     @GetMapping("/delete/{id}")
     public Result<Boolean> deleteById(@PathVariable Long id) {
-       // QueryWrapper<PmsProductAttributeCategoryPo> whereWrapper = new QueryWrapper<PmsProductAttributeCategoryPo>().eq("id", id);
         boolean b = service.removeById(id);
         if (b) {
             return Result.success(b);
@@ -73,8 +72,8 @@ public class PmsProductAttributeCategoryController {
      * @date 2022/12/10 21:47
      */
     @ApiOperation("分页查询商品属性分类")
-    @GetMapping("/getAll")
-    public Result<CommonPage<PmsProductAttributeCategoryPo>> getAll(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+    @GetMapping("/list")
+    public Result<CommonPage<PmsProductAttributeCategoryPo>> getAll(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "5") Integer pageSize) {
         List<PmsProductAttributeCategoryPo> list = service.getAll(pageNum, pageSize);
         if (list.isEmpty()) {
             return Result.failed();
@@ -91,7 +90,7 @@ public class PmsProductAttributeCategoryController {
      * @date 2022/12/10 21:47
      */
     @ApiOperation("获取单个商品属性分类信息")
-    @GetMapping("/getById/{id}")
+    @GetMapping("/{id}")
     public Result<PmsProductAttributeCategoryPo> getById(@PathVariable Long id) {
         //声明pmsProductAttributeCategoryPo
         PmsProductAttributeCategoryPo pmsProductAttributeCategoryPo;

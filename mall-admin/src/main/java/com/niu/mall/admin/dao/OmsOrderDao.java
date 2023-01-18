@@ -1,8 +1,10 @@
 package com.niu.mall.admin.dao;
 
+import com.niu.mall.admin.dto.OmsOrderDetailDto;
 import com.niu.mall.mbg.po.OmsOrderPo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -14,5 +16,13 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface OmsOrderDao extends BaseMapper<OmsOrderPo> {
-
+    /**
+     * 获取订单详情
+     *
+     * @param id 订单id
+     * @return com.niu.mall.admin.dto.OmsOrderDetail
+     * @author lihaojie
+     * @date 2023/01/17 00:51
+     */
+    OmsOrderDetailDto getDetail(@Param("id") Long id);
 }

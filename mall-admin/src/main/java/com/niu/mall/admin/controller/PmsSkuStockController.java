@@ -18,7 +18,7 @@ import java.util.List;
  * @date 2022/12/21 16:40
  **/
 @RestController
-@RequestMapping("/pmsSkuStockPo")
+@RequestMapping("/sku")
 public class PmsSkuStockController {
     @Autowired
     private PmsSkuStockService service;
