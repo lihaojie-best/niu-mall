@@ -1,7 +1,7 @@
 package com.niu.mall.admin.controller;
 
-import com.niu.mall.admin.service.UmsResourceService;
-import com.niu.mall.mbg.po.UmsResourcePo;
+import com.niu.mall.service.UmsResourceService;
+import com.niu.mall.po.UmsResourcePo;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
@@ -10,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @RunWith(Runner.class)
 class UmsResourceControllerTest {
@@ -19,6 +17,7 @@ class UmsResourceControllerTest {
     private UmsResourceService resourceService;
     @Autowired
     private UmsResourceService service;
+
 
     @Test
     void ServiceTest1() {
@@ -51,5 +50,10 @@ class UmsResourceControllerTest {
     @Test
     void listAll() {
 
+    }
+    @Test
+    void serviceListAll() {
+        List<UmsResourcePo> resourcePoList = service.listAll();
+        resourcePoList.forEach(System.out::println);
     }
 }

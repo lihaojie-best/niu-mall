@@ -13,6 +13,7 @@
         <module>mall-common</module>
         <module>mall-admin</module>
         <module>mall-security</module>
+        <module>mall-eureka-server-8761</module>
     </modules>
 
     <parent>
@@ -25,9 +26,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
         <skipTests>true</skipTests>
-        <docker.host>http://192.168.3.101:2375</docker.host>
         <docker.maven.plugin.version>1.2.2</docker.maven.plugin.version>
         <druid.version>1.1.23</druid.version>
         <swagger2.version>2.9.2</swagger2.version>
@@ -90,6 +90,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--spring cloud依赖管理，引入了Spring Cloud的版本-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <!--mall通用模块-->
             <dependency>
@@ -115,7 +123,6 @@
                 <version>${swagger-models.version}</version>
             </dependency>
             <!--Swagger-UI end-->
-
             <!--MybatisPlus begin -->
             <!--Lombok-->
             <dependency>
@@ -177,34 +184,6 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>com.spotify</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
-                    <version>${docker.maven.plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>build-image</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <imageName>mall/${project.artifactId}:${project.version}</imageName>
-                        <dockerHost>${docker.host}</dockerHost>
-                        <baseImage>java:8</baseImage>
-                        <entryPoint>["java", "-jar", "-spring.profiles.active=prod","/${project.build.finalName}.jar"]
-                        </entryPoint>
-                        <resources>
-                            <resource>
-                                <targetPath>/</targetPath>
-                                <directory>${project.build.directory}</directory>
-                                <include>${project.build.finalName}.jar</include>
-                            </resource>
-                        </resources>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

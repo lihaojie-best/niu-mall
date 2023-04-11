@@ -20,9 +20,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import java.time.Duration;
 
 /**
- * Redis基础配置
- * Created by macro on 2020/6/19.
- */
+ * 自定义返回结果：没有权限访问时
+ *
+ * @author lihaojie
+ * @date 2023/01/21 21:38
+ **/
 public class BaseRedisConfig {
 
     @Bean

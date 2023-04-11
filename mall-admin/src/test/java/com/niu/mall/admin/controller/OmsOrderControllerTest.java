@@ -1,9 +1,10 @@
 package com.niu.mall.admin.controller;
 
-import com.niu.mall.admin.param.OmsMoneyInfoParam;
-import com.niu.mall.admin.param.OmsOrderDeliveryParam;
-import com.niu.mall.admin.param.OmsOrderQueryParam;
-import com.niu.mall.admin.param.OmsReceiverInfoParam;
+import com.niu.mall.controller.OmsOrderController;
+import com.niu.mall.param.OmsMoneyInfoParam;
+import com.niu.mall.param.OmsOrderDeliveryParam;
+import com.niu.mall.param.OmsOrderQueryParam;
+import com.niu.mall.param.OmsReceiverInfoParam;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
@@ -13,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @RunWith(Runner.class)
 class OmsOrderControllerTest {

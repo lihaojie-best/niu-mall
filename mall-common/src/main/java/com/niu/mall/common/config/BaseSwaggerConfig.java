@@ -18,9 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Swagger基础配置
- * Created by macro on 2020/7/16.
- */
+ * swagger @api 注解description弃用
+ *
+ * @author lihaojie
+ * @date 2023/01/18 14:08
+ **/
 @Configuration
 @EnableSwagger2
 public abstract class BaseSwaggerConfig {
@@ -54,6 +56,7 @@ public abstract class BaseSwaggerConfig {
         }
         return docket;
     }
+
     //配置swagger信息 =apiInfo
     private ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
         return new ApiInfoBuilder()
@@ -63,6 +66,7 @@ public abstract class BaseSwaggerConfig {
                 .version(swaggerProperties.getVersion())
                 .build();
     }
+
     /**
      * 设置请求头token
      *

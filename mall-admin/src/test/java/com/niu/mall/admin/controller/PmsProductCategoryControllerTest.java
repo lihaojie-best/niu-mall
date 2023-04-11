@@ -1,10 +1,11 @@
 package com.niu.mall.admin.controller;
 
-import com.niu.mall.admin.dto.PmsProductCategoryWithChildrenDto;
-import com.niu.mall.admin.param.PmsProductCategoryParam;
+import com.niu.mall.controller.PmsProductCategoryController;
+import com.niu.mall.dto.PmsProductCategoryWithChildrenDto;
+import com.niu.mall.param.PmsProductCategoryParam;
 import com.niu.mall.common.api.CommonPage;
 import com.niu.mall.common.api.Result;
-import com.niu.mall.mbg.po.PmsProductCategoryPo;
+import com.niu.mall.po.PmsProductCategoryPo;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;

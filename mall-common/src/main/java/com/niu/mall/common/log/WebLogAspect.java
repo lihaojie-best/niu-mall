@@ -31,15 +31,18 @@ import java.util.Map;
 
 /**
  * 统一日志处理切面
- * Created by macro on 2018/4/26.
- */
+ *
+ * @author lihaojie
+ * @date 2023/01/18 13:20
+ **/
 @Aspect
 @Component
-@Order(1)
+@Order(2)
 public class WebLogAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
+
     // aspectj语法 参数（..） 参数可有可无不限个数  参数（*) 参数必须有但是个数不限 public可以省略  *..* 省略包
-    @Pointcut("execution(public * com.niu.mall.admin.controller.*.*(..))||execution(public * com.niu.mall.*.controller.*.*(..))")
+    @Pointcut("execution(public * com.niu.mall.controller.*.*(..))||execution(public * com.niu.mall.*.controller.*.*(..))")
     public void webLog() {
     }
 
@@ -83,14 +86,14 @@ public class WebLogAspect {
         webLog.setStartTime(startTime);
         webLog.setUri(request.getRequestURI());
         webLog.setUrl(request.getRequestURL().toString());
-        Map<String,Object> logMap = new HashMap<>();
-        logMap.put("url",webLog.getUrl());
-        logMap.put("method",webLog.getMethod());
-        logMap.put("parameter",webLog.getParameter());
-        logMap.put("spendTime",webLog.getSpendTime());
-        logMap.put("description",webLog.getDescription());
-//        LOGGER.info("{}", JSONUtil.parse(webLog));
-        LOGGER.info(Markers.appendEntries(logMap), JSONUtil.parse(webLog).toString());
+        Map<String, Object> logMap = new HashMap<>();
+        logMap.put("url", webLog.getUrl());
+        logMap.put("method", webLog.getMethod());
+        logMap.put("parameter", webLog.getParameter());
+        logMap.put("spendTime", webLog.getSpendTime());
+        logMap.put("description", webLog.getDescription());
+        //LOGGER.info("{}", JSONUtil.parse(webLog));
+        LOGGER.info(Markers.appendEntries(logMap),JSONUtil.parse(webLog).toString());
         return result;
     }
 

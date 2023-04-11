@@ -2,7 +2,8 @@ package com.niu.mall.admin.controller;
 
 import com.niu.mall.common.api.CommonPage;
 import com.niu.mall.common.api.Result;
-import com.niu.mall.mbg.po.PmsBrandPo;
+import com.niu.mall.controller.PmsBrandController;
+import com.niu.mall.po.PmsBrandPo;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
@@ -11,8 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @RunWith(Runner.class)

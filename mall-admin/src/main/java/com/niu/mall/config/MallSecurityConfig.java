@@ -1,11 +1,8 @@
 package com.niu.mall.config;
 
 
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.niu.mall.admin.service.UmsAdminService;
-import com.niu.mall.admin.service.UmsResourceService;
-import com.niu.mall.mbg.po.UmsResourcePo;
+import com.niu.mall.service.UmsAdminService;
+import com.niu.mall.service.UmsResourceService;
 import com.niu.mall.security.component.DynamicSecurityService;
 import com.niu.mall.security.config.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +13,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.List;
+import javax.annotation.Resource;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -33,26 +30,24 @@ public class MallSecurityConfig extends SecurityConfig {
 
     @Autowired
     private UmsAdminService adminService;
-    @Autowired
+    @Resource
     private UmsResourceService resourceService;
 
     @Bean
     public UserDetailsService userDetailsService() {
-        //获取登录用户信息
+        //获取登录用户信息: 用户信息+资源列表
         return username -> adminService.loadUserByUsername(username);
     }
 
     @Bean
     public DynamicSecurityService dynamicSecurityService() {
-        return new DynamicSecurityService() {
-            @Override
-            public Map<String, ConfigAttribute> loadDataSource() {
-                Map<String, ConfigAttribute> map = new ConcurrentHashMap<>();
-                //获取全部资源
-               /* List<UmsResourcePo> list = resourceService.listAll();
-                list.forEach(resourcePo ->map.put(resourcePo.getUrl(), new org.springframework.security.access.SecurityConfig(resourcePo.getId() + ":" + resourcePo.getName())));*/
-                return map;
-            }
+        return () -> {
+            Map<String, ConfigAttribute> map = new ConcurrentHashMap<>();
+            //获取全部资源  下面这行代码有问题 注释掉这行代码就可以启动了 现在项目启动不了！！！
+            //List<UmsResourcePo> list = resourceService.listAll();
+            //list.forEach(resourcePo -> map.put(resourcePo.getUrl(), new org.springframework.security.access.SecurityConfig(resourcePo.getId() + ":" + resourcePo.getName())));
+            return map;
         };
     }
+
 }

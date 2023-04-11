@@ -12,8 +12,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @date 2022/4/11 9:03
  */
 @SpringBootApplication
-@EnableSwagger2             
-@MapperScan("com.niu.mall.admin.dao")
+@EnableSwagger2
+@MapperScan("com.niu.mall.dao")
 public class AdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);

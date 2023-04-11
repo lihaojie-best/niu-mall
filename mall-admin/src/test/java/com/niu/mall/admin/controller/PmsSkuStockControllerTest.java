@@ -1,7 +1,8 @@
 package com.niu.mall.admin.controller;
 
 import com.niu.mall.common.api.Result;
-import com.niu.mall.mbg.po.PmsSkuStockPo;
+import com.niu.mall.controller.PmsSkuStockController;
+import com.niu.mall.po.PmsSkuStockPo;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;

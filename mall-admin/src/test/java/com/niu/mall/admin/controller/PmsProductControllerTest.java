@@ -1,11 +1,11 @@
 package com.niu.mall.admin.controller;
 
-import com.niu.mall.admin.dao.PmsProductDao;
-import com.niu.mall.admin.dto.PmsProductDto;
-import com.niu.mall.admin.dto.PmsProductQueryDto;
 import com.niu.mall.common.api.CommonPage;
 import com.niu.mall.common.api.Result;
-import com.niu.mall.mbg.po.*;
+import com.niu.mall.controller.PmsProductController;
+import com.niu.mall.dto.PmsProductDto;
+import com.niu.mall.dto.PmsProductQueryDto;
+import com.niu.mall.po.*;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;

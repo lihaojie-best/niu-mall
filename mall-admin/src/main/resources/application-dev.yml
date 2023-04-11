@@ -13,7 +13,7 @@ spring:
         login-username: druid
         login-password: druid
   redis:
-    host: 10.9.9.72 # Redis服务器地址
+    host: 10.9.9.70 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
     password: # Redis服务器连接密码（默认为空）
@@ -22,7 +22,5 @@ spring:
 logging:
   level:
     root: info
-    com.macro.mall: debug
+    com.niu.mall: debug
 
-logstash:
-  host: localhost

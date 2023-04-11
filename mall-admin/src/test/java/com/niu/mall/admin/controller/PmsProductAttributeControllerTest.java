@@ -1,10 +1,11 @@
 package com.niu.mall.admin.controller;
 
-import com.niu.mall.admin.dto.PmsProductAttrInfoDto;
-import com.niu.mall.admin.param.PmsProductAttributeParam;
+import com.niu.mall.controller.PmsProductAttributeController;
+import com.niu.mall.dto.PmsProductAttrInfoDto;
+import com.niu.mall.param.PmsProductAttributeParam;
 import com.niu.mall.common.api.CommonPage;
 import com.niu.mall.common.api.Result;
-import com.niu.mall.mbg.po.PmsProductAttributePo;
+import com.niu.mall.po.PmsProductAttributePo;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
@@ -13,8 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 商品属性管理测试

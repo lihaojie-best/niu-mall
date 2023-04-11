@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niu.mall.dao.PmsMemberPriceDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.niu.mall.po.PmsMemberPricePo">
+        <id column="id" property="id" />
+        <result column="product_id" property="productId" />
+        <result column="member_level_id" property="memberLevelId" />
+        <result column="member_price" property="memberPrice" />
+        <result column="member_level_name" property="memberLevelName" />
+    </resultMap>
+    <insert id="insertList">
+        INSERT INTO pms_member_price (product_id, member_level_id, member_price,member_level_name) VALUES
+        <foreach collection="list" separator="," item="item" index="index">
+            (#{item.productId,jdbcType=BIGINT},
+            #{item.memberLevelId,jdbcType=BIGINT},
+            #{item.memberPrice,jdbcType=DECIMAL},
+            #{item.memberLevelName,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

@@ -26,7 +26,7 @@ public class SwaggerConfig extends BaseSwaggerConfig {
                 .apiBasePackage("com.niu.mall.admin.controller")
                 .title("mall后台系统")
                 .description("mall后台相关接口文档")
-                .contactName("lihaojie")
+                .contactName("李浩杰")
                 .version("1.0")
                 .contactEmail("2014542916@qq.com")
                 .enableSecurity(true)

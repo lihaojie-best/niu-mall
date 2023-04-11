@@ -1,15 +1,12 @@
 package com.niu.mall.admin.controller;
 
-import com.niu.mall.mbg.po.OmsOrderSettingPo;
+import com.niu.mall.controller.OmsOrderSettingController;
+import com.niu.mall.po.OmsOrderSettingPo;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runner.Runner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.awt.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @RunWith(Runner.class)
