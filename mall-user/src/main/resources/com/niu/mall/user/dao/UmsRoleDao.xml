@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niu.mall.user.dao.UmsRoleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.niu.mall.user.po.UmsRolePo">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="description" property="description" />
+        <result column="admin_count" property="adminCount" />
+        <result column="create_time" property="createTime" />
+        <result column="status" property="status" />
+        <result column="sort" property="sort" />
+    </resultMap>
+    <select id="getMenuList" resultType="com.niu.mall.user.po.UmsMenuPo">
+        SELECT
+            m.id id,
+            m.parent_id parentId,
+            m.create_time createTime,
+            m.title title,
+            m.level LEVEL,
+            m.sort sort,
+            m.name NAME,
+            m.icon icon,
+            m.hidden hidden
+        FROM
+            `ums_admin_role_relation` arr
+                JOIN  `ums_role` r ON arr.`role_id`=r.`id`
+                JOIN	`ums_role_menu_relation` rmr ON rmr.`role_id`=r.`id`
+                JOIN `ums_menu` m ON rmr.`menu_id` = m.`id`
+        WHERE arr.`admin_id`=1
+          AND
+            m.`id` IS NOT NULL
+        GROUP BY
+            m.`id`
+    </select>
+    <select id="getMenuListByRoleId" resultType="com.niu.mall.user.po.UmsMenuPo">
+        SELECT
+            m.id id,
+            m.parent_id parentId,
+            m.create_time createTime,
+            m.title title,
+            m.level LEVEL,
+            m.sort sort,
+            m.name NAME,
+            m.icon icon,
+            m.hidden hidden
+        FROM
+            ums_role_menu_relation urmr
+                JOIN ums_menu m ON m.id=urmr.menu_id
+        where urmr.role_id=#{roleId}
+          AND m.id IS NOT NULL
+        GROUP BY
+            m.id
+    </select>
+    <select id="getResourceByRoleId" resultType="com.niu.mall.user.po.UmsResourcePo">
+        SELECT
+            r.id id,
+            r.create_time createTime,
+            r.`name` `name`,
+            r.url url,
+            r.description description,
+            r.category_id categoryId
+        FROM
+            ums_role_resource_relation rrr
+                LEFT JOIN ums_resource r ON rrr.resource_id = r.id
+        WHERE
+            rrr.role_id = #{roleId}
+          AND r.id IS NOT NULL
+        GROUP BY
+            r.id
+    </select>
+
+</mapper>
