@@ -33,6 +33,7 @@ public class UmsResourceController {
     @ResponseBody
     public Result create(@RequestBody UmsResourcePo umsResource) {
         int count = resourceService.create(umsResource);
+        // 后台资源规则被缓存在了一个Map对象之中，所以当后台资源发生变化时，我们需要清空缓存的数据
         dynamicSecurityMetadataSource.clearDataSource();
         if (count > 0) {
             return Result.success(count);

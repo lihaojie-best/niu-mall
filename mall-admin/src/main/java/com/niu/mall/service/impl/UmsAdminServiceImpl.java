@@ -157,6 +157,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminDao, UmsAdminPo> im
         List<UmsAdminPo> adminList = adminDao.selectList(new QueryWrapper<UmsAdminPo>().eq("username", username));
         if (adminList != null && adminList.size() > 0) {
             admin = adminList.get(0);
+            //将数据库中的数据存入缓存中
             getCacheService().setAdmin(admin);
             return admin;
         }

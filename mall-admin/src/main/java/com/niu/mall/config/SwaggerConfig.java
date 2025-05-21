@@ -23,7 +23,7 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("com.niu.mall.admin.controller")
+                .apiBasePackage("com.niu.mall.controller")
                 .title("mall后台系统")
                 .description("mall后台相关接口文档")
                 .contactName("李浩杰")

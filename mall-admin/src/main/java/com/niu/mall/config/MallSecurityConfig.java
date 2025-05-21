@@ -9,7 +9,6 @@ import com.niu.mall.security.config.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -43,7 +42,6 @@ public class MallSecurityConfig extends SecurityConfig {
     }
 
 
-    @DependsOn("dataSource")
     @Bean
     public DynamicSecurityService dynamicSecurityService() {
         return () -> {

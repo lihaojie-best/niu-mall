@@ -19,7 +19,7 @@ import java.util.List;
  * @author lihaojie
  * @since 2022-11-21
  */
-@Api(tags = "优惠卷领取使用历史前端控制器")
+@Api(tags = "SmsCouponHistoryController",description = "优惠卷领取使用历史前端控制器")
 @RestController
 @RequestMapping("/couponHistoryPo")
 public class SmsCouponHistoryController {

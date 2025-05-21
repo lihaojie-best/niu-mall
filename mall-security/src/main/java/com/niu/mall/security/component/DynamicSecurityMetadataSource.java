@@ -2,6 +2,7 @@ package com.niu.mall.security.component;
 
 import cn.hutool.core.util.URLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
@@ -21,12 +22,20 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
     private static Map<String, ConfigAttribute> configAttributeMap = null;
     @Autowired
     private DynamicSecurityService dynamicSecurityService;
+    //@PostConstruct 是 Java 注解之一，用于标记一个方法，该方法应在依赖注入完成后、对象投入使用之前执行。它通常用于执行初始化逻辑。
+    // 目的是延迟执行，当 web-admin初始化，并实现该接口后，采取调用此接口
 
-    @PostConstruct
+    /**
+     * 获取权限信息
+     */
+   // @PostConstruct
     public void loadDataSource() {
         configAttributeMap = dynamicSecurityService.loadDataSource();
     }
 
+    /**
+     * 清空权限信息
+     */
     public void clearDataSource() {
         configAttributeMap.clear();
         configAttributeMap = null;
@@ -34,7 +43,9 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
-        if (configAttributeMap == null) this.loadDataSource();
+
+        if (configAttributeMap == null) this.loadDataSource();// 如果权限信息为空的话，就去获取一下啊
+
         List<ConfigAttribute>  configAttributes = new ArrayList<>();
         //获取当前访问的路径
         String url = ((FilterInvocation) o).getRequestUrl();

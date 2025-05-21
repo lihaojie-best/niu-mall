@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 
 /**
  * Redis缓存切面，防止Redis宕机影响正常业务逻辑
+ * redis 宕机后我们就无法进行登入操作了
  * Created by macro on 2020/3/17.
  */
 @Aspect
@@ -24,7 +25,7 @@ import java.lang.reflect.Method;
 public class RedisCacheAspect {
     private static Logger LOGGER = LoggerFactory.getLogger(RedisCacheAspect.class);
 
-    @Pointcut("execution(public * com.macro.mall.portal.service.*CacheService.*(..)) || execution(public * com.macro.mall.service.*CacheService.*(..))")
+    @Pointcut("execution(public * com.niu.mall.user.service.*CacheService.*(..)) || execution(public * com.niu.mall.service.*CacheService.*(..))")
     public void cacheAspect() {
     }
 
