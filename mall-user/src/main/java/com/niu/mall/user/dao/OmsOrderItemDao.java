@@ -3,6 +3,9 @@ package com.niu.mall.user.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.niu.mall.user.po.OmsOrderItemPo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface OmsOrderItemDao extends BaseMapper<OmsOrderItemPo> {
-
+    /**
+     * 批量插入
+     */
+    int insertList(@Param("list") List<OmsOrderItemPo> list);
 }

@@ -4,10 +4,20 @@ spring:
   profiles:
     active: dev #默认为开发环境
 
-mybatis:
+#mybatis:
+#  mapper-locations:
+#    - classpath:dao/*.xml
+#    - classpath*:com/**/dao/*.xml
+#Mybatis-plus的寻址方式
+mybatis-plus:
   mapper-locations:
-    - classpath:dao/*.xml
-    - classpath*:com/**/mapper/*.xml
+    - classpath*:com/niu/mall/user/dao/*.xml #指定mapper.xml路径
+  global-config:
+    db-config:
+      id-type: auto #全局默认主键类型设置为自增
+  configuration:
+    auto-mapping-behavior: partial #只对非嵌套的 resultMap 进行自动映射
+    map-underscore-to-camel-case: true #开启自动驼峰命名规则映射
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头

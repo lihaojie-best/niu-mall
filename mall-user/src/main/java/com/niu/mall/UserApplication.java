@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 客户端启动类
  *
- * @author zhangkexin
+ * @author lihaojie
  * @date 2025/05/21 19:36
  **/
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.niu.mall"})
 public class UserApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);

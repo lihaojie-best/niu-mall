@@ -21,7 +21,7 @@ spring:
 #Mybatis-plus的寻址方式
 mybatis-plus:
   #mapper-locations: classpath:mapper/*.xml
-  mapper-locations: com/**/dao/*.xml
+  mapper-locations: classpath:com/**/dao/*.xml
   configuration:
     map-underscore-to-camel-case: true
   global-config:
