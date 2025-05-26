@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 /**
  * Redis缓存切面，防止Redis宕机影响正常业务逻辑
  * redis 宕机后我们就无法进行登入操作了
- * Created by macro on 2020/3/17.
+ * Created by lihaojie on 2023/3/17.
  */
 @Aspect
 @Component

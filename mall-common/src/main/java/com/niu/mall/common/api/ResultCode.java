@@ -2,7 +2,7 @@ package com.niu.mall.common.api;
 
 /**
  * 常用API返回对象
- * Created by macro on 2019/4/19.
+ * Created by lihaojie on 2023/4/19.
  */
 public enum ResultCode implements IErrorCode {
     SUCCESS(200, "操作成功"),

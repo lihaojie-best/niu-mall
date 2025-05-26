@@ -34,7 +34,7 @@ import java.util.Random;
 
 /**
  * 会员管理Service实现类
- * Created by macro on 2018/8/3.
+ * Created by lihaojie on 2023/8/3.
  */
 @Service
 public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberDao,UmsMemberPo> implements UmsMemberService {
@@ -135,13 +135,27 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberDao,UmsMemberPo> 
         memberCacheService.delMember(umsMember.getId());
     }
 
+    /**
+     * 获取当前登录的会员信息
+     *
+     * 该方法用于获取当前安全上下文中认证通过的会员详细信息它首先获取当前的安全上下文，
+     * 然后提取出认证信息，并将认证信息中的主体（Principal）转换为MemberDetails类型，
+     * 最后返回该类型的UmsMemberPo对象，即会员实体
+     *
+     * @return UmsMemberPo 当前登录的会员实体信息如果未认证或认证信息异常，则返回null
+     */
     @Override
     public UmsMemberPo getCurrentMember() {
+        // 获取当前的安全上下文
         SecurityContext ctx = SecurityContextHolder.getContext();
+        // 从安全上下文中获取认证信息
         Authentication auth = ctx.getAuthentication();
+        // 将认证信息中的主体转换为会员详细信息对象
         MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+        // 返回会员实体
         return memberDetails.getUmsMember();
     }
+
 
     @Override
     public void updateIntegration(Long id, Integer integration) {
@@ -161,23 +175,41 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberDao,UmsMemberPo> 
         throw new UsernameNotFoundException("用户名或密码错误");
     }
 
+    /**
+     * 用户登录方法
+     *
+     * @param username 用户名，需要与数据库中存储的用户名匹配
+     * @param password 密码，需要与数据库中存储的密码匹配
+     * @return 登录成功后返回的令牌，用于后续的授权验证
+     *
+     * 注意：密码需要客户端加密后传递，以增强安全性
+     */
     @Override
     public String login(String username, String password) {
         String token = null;
         //密码需要客户端加密后传递
         try {
+            //加载用户信息，根据用户名获取用户详情
             UserDetails userDetails = loadUserByUsername(username);
+            //比对用户输入的密码与数据库中存储的密码是否匹配
             if(!passwordEncoder.matches(password,userDetails.getPassword())){
+                //如果密码不正确，抛出异常
                 throw new BadCredentialsException("密码不正确");
             }
+            //创建认证对象，参数分别为用户详情、凭证和用户权限
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            //将认证信息存储到SecurityContextHolder中，以供后续使用
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            //生成令牌并返回
             token = jwtTokenUtil.generateToken(userDetails);
         } catch (AuthenticationException e) {
+            //记录登录异常信息
             LGGER.warn("登录异常:{}", e.getMessage());
         }
+        //返回生成的令牌
         return token;
     }
+
 
     @Override
     public String refreshToken(String token) {

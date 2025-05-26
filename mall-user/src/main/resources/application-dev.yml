@@ -37,6 +37,12 @@ logging:
   level:
     root: info
 #    com.niu.mall: debug
+    org.springframework: INFO
+    org.hibernate: INFO
+    com.baomidou.mybatisplus: INFO
+    io.springfox: WARN
+    com.zaxxer.hikari: INFO
+    org.apache.tomcat: INFO
 logstash:
   host: 192.168.3.131
 

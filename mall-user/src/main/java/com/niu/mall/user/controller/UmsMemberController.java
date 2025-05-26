@@ -67,7 +67,7 @@ public class UmsMemberController {
         if(principal==null){
             return Result.unauthorized(null);
         }
-        UmsMemberPo member = memberService.getCurrentMember();
+        UmsMemberPo member   = memberService.getCurrentMember();
         return Result.success(member);
     }
 

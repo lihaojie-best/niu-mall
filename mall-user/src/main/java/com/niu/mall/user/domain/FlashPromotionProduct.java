@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 /**
  * 秒杀信息和商品对象封装
- * Created by macro on 2019/1/28.
+ * Created by lihaojie on 2023/1/28.
  */
 @Getter
 @Setter

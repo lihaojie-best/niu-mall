@@ -15,7 +15,7 @@ import java.util.*;
 /**
  * 动态权限数据源，用于获取动态权限规则
  * 就是获取DynamicAccessDecisionManager中的configAttributes参数
- * Created by macro on 2020/2/7.
+ * Created by lihaojie on 2023/2/7.
  */
 public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 

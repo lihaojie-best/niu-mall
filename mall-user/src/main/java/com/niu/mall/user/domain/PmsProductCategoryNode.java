@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 包含子分类的商品分类
- * Created by macro on 2020/4/6.
+ * Created by lihaojie on 2023/4/6.
  */
 @Getter
 @Setter

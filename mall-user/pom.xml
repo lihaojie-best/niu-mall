@@ -67,7 +67,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.niu.mall.UserApplication</mainClass>
+                    <mainClass>com.niu.mall.user.UserApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * 消息队列枚举类
- * Created by macro on 2018/9/14.
+ * Created by lihaojie on 2023/9/14.
  */
 @Getter
 public enum QueueEnum {

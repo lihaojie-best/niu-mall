@@ -35,7 +35,7 @@
             AND pr.flash_promotion_session_id = #{sessionId}
     </select>
 
-    <select id="getNewProductList" resultMap="com.niu.mall.dao.PmsProductDao.BaseResultMap">
+    <select id="getNewProductList" resultMap="com.niu.mall.user.dao.PmsProductDao.BaseResultMap">
         SELECT p.*
         FROM
             sms_home_new_product hp
@@ -48,7 +48,7 @@
         LIMIT #{offset}, #{limit};
     </select>
 
-    <select id="getHotProductList" resultMap="com.niu.mall.dao.PmsProductDao.BaseResultMap">
+    <select id="getHotProductList" resultMap="com.niu.mall.user.dao.PmsProductDao.BaseResultMap">
         SELECT p.*
         FROM
             sms_home_recommend_product hp
@@ -61,7 +61,7 @@
         LIMIT #{offset}, #{limit};
     </select>
 
-    <select id="getRecommendSubjectList" resultMap="com.niu.mall.dao.CmsSubjectDao.BaseResultMap">
+    <select id="getRecommendSubjectList" resultMap="com.niu.mall.user.dao.CmsSubjectDao.BaseResultMap">
         SELECT s.*
         FROM
             sms_home_recommend_subject hs

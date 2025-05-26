@@ -21,7 +21,7 @@ import static jdk.nashorn.api.scripting.ScriptUtils.convert;
 
 /**
  * 前台订单管理Service实现类
- * Created by macro on 2020/4/6.
+ * Created by lihaojie on 2023/4/6.
  */
 @Service
 public class PmsPortalProductServiceImpl implements PmsPortalProductService {
@@ -87,7 +87,7 @@ public class PmsPortalProductServiceImpl implements PmsPortalProductService {
         // 查询所有商品分类
         List<PmsProductCategoryPo> allList = productCategoryMapper.selectList(null);
 
-// 构建树形结构，只保留 parentId = 0 的根节点
+        // 构建树形结构，只保留 parentId = 0 的根节点
         List<PmsProductCategoryNode> result = allList.stream()
                 .filter(item -> item.getParentId() == 0)
                 .map(item -> (PmsProductCategoryNode) convert(item, allList))

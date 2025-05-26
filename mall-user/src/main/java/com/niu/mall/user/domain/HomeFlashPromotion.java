@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 首页秒杀场次信息封装
- * Created by macro on 2019/1/28.
+ * Created by lihaojie on 2023/1/28.
  */
 @Getter
 @Setter

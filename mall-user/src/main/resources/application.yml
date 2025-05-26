@@ -4,14 +4,10 @@ spring:
   profiles:
     active: dev #默认为开发环境
 
-#mybatis:
-#  mapper-locations:
-#    - classpath:dao/*.xml
-#    - classpath*:com/**/dao/*.xml
 #Mybatis-plus的寻址方式
 mybatis-plus:
   mapper-locations:
-    - classpath*:com/niu/mall/user/dao/*.xml #指定mapper.xml路径
+    - classpath:mapper/*.xml #指定mapper.xml路径
   global-config:
     db-config:
       id-type: auto #全局默认主键类型设置为自增

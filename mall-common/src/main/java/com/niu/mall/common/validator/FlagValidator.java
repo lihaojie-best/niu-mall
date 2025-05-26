@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 /**
  * 用于验证状态是否在指定范围内的注解
- * Created by macro on 2018/4/26.
+ * Created by lihaojie on 2023/4/26.
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

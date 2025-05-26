@@ -8,7 +8,7 @@ import lombok.Setter;
 
 /**
  * 申请信息封装
- * Created by macro on 2018/10/18.
+ * Created by lihaojie on 2023/10/18.
  */
 public class OmsOrderReturnApplyResultDto extends OmsOrderReturnApplyPo {
     @Getter

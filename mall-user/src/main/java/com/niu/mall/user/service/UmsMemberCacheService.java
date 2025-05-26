@@ -5,7 +5,7 @@ import com.niu.mall.user.po.UmsMemberPo;
 
 /**
  * 会员信息缓存业务类
- * Created by macro on 2020/3/14.
+ * Created by lihaojie on 2023/3/14.
  */
 public interface UmsMemberCacheService {
     /**
